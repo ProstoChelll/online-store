@@ -1,0 +1,10 @@
+export { default as iPhone13ProMax } from "./iphone13ProMax/iPhone13ProMax.vue";
+export { default as AppleAirPods } from "./AppleAirPods/AppleAirPods.vue";
+export { default as AppleBYZS852I } from "./AppleBYZS852I/AppleBYZS852I.vue";
+export { default as AppleEarPods } from "./AppleEarPods/AppleEarPods.vue";
+export { default as AppleEarPodsInBox } from "./AppleEarPodsInBox/AppleEarPodsInBox.vue";
+export { default as BOROFONEBO4 } from "./BOROFONEBO4/BOROFONEBO4.vue";
+export { default as GERLAXGH04 } from "./GERLAXGH04/GERLAXGH04.vue";
+export { default as GlassCover } from "./glassCover/glassCover.vue";
+export { default as LeaverCover } from "./leaverCover/leatherCover.vue";
+export { default as SiliconeCover } from "./siliconeCover/siliconeCover.vue";
