@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <slot><p>FavoritesPage</p></slot>
+  <slot><p>ContactPage</p></slot>
 </template>
 
 <style module scoped></style>

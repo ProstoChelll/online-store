@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { PageTemplate, Header } from "../layouts";
-import { AdBlock } from "../components";
+import { PageTemplate } from "../layouts/allLayout";
+import { AdBlock } from "../components/allComponents";
+import { ChoseCovers } from "../components/allComponents";
+import { Headphones } from "../components/allComponents";
+import { WirelessHeadphones } from "../components/allComponents";
 </script>
+
 <template>
   <PageTemplate>
-    <template #header>
-      <Header />
-    </template>
-    <template #ad><AdBlock class="mt-[22px]" /></template>
+    <template #header><span></span></template>
+    <template #ad><AdBlock class="mt-[22px] mb-11" /></template>
     <template #body>
-      <div class="flex-1 h-full bg-white">123123</div>
+      <div><ChoseCovers /></div>
+      <div class="ml-[90px]"><Headphones /></div>
+      <div><WirelessHeadphones /></div>
     </template>
+    <template #footer> </template>
   </PageTemplate>
 </template>
