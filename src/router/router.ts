@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import * as pages from "../pages/allPages";
+import * as pages from "../pages";
 
 const routes = [
   { path: "/", component: pages.MainPage },

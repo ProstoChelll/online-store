@@ -1,13 +1,13 @@
-import { iPhone13ProMax } from "../images/allImages";
-import { AppleAirPods } from "../images/allImages";
-import { AppleBYZS852I } from "../images/allImages";
-import { AppleEarPods } from "../images/allImages";
-import { AppleEarPodsInBox } from "../images/allImages";
-import { BOROFONEBO4 } from "../images/allImages";
-import { GERLAXGH04 } from "../images/allImages";
-import { GlassCover } from "../images/allImages";
-import { LeaverCover } from "../images/allImages";
-import { SiliconeCover } from "../images/allImages";
+import { iPhone13ProMax } from "../images";
+import { AppleAirPods } from "../images";
+import { AppleBYZS852I } from "../images";
+import { AppleEarPods } from "../images";
+import { AppleEarPodsInBox } from "../images";
+import { BOROFONEBO4 } from "../images";
+import { GERLAXGH04 } from "../images";
+import { GlassCover } from "../images";
+import { LeaverCover } from "../images";
+import { SiliconeCover } from "../images";
 
 export {
   iPhone13ProMax,

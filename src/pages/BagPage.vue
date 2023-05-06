@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
+import { useStore } from "../store/store";
+const store = useStore();
 
 onMounted(() => {
-  console.log("BagPage mounted!");
+  store.setDocumentTitle("Bag");
 });
 </script>
 <template>
