@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-const id = "123";
+import { useStore } from "../store/store";
+const store = useStore();
+
 onMounted(() => {
-  console.log("Catalog mounted!");
+  store.setDocumentTitle("Catalog");
 });
+const id = "123";
 </script>
 <template>
   <h1>Catalog Page</h1>
