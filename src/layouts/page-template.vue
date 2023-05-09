@@ -4,7 +4,7 @@ import pageFooter from "./page-footer.vue";
 </script>
 <template>
   <div class="w-full flex justify-center">
-    <div class="w-full md:w-[1140px] flex flex-col items-center">
+    <div class="w-full flex flex-col items-center md:w-[1140px]">
       <slot name="header">
         <pageHeader />
       </slot>

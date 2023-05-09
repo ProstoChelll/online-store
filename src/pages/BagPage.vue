@@ -4,7 +4,7 @@ import { useStore } from "../store/store";
 const store = useStore();
 
 onMounted(() => {
-  store.setDocumentTitle("Bag");
+  store.setDocumentTitle("bag");
 });
 </script>
 <template>

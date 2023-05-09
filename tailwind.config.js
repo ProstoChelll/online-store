@@ -13,7 +13,7 @@ export default {
       xl: "1400px",
       // => @media (min-width: 1280px) { ... }
 
-      "2xl": "1920px",
+      // 2xl: "1160px"
       // => @media (min-width: 1280px) { ... }
     },
   },
