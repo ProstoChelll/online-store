@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import { Ref, ref } from "vue";
-import useFavorites from "../transferUseFavorites"
+import {  ref } from "vue";
+import {useFavorites} from "../../store/favorites"
+import { type Iproduct } from '../../types'
 const favorites = useFavorites()
 
-interface Idata {
-  img: string;
-  name: string;
-  rating: number;
-  cost: number;
-  oldCost: string;
-  id:string
-  active: Ref<boolean>
-}
 
-const dataArr: Idata[] = [
+
+const dataArr: Iproduct[] = [
   { img: "none", name: "", rating: 0, cost: 0, oldCost: "", id: "", active:  ref(false) },
   { img: "none", name: "Apple AirPods", rating: 4.7, cost: 9527, oldCost: "", id: "AppleAirPods_1", active: ref(false) },
   { img: "none", name: "GERLAX GH-04", rating: 4.7, cost: 6527, oldCost: "", id: "GERLAXGH-04_1", active:  ref(false) },

@@ -11,3 +11,9 @@ body {
   display: flex;
   justify-content: center;
 }
+
+@layer components {
+  body1 {
+    @apply font-medium text-[15px] leading-[18px];
+  }
+}
