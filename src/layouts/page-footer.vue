@@ -5,27 +5,17 @@
       class="w-[1110px] flex lg:flex-col md:flex-row h-[149px] bg-white flex justify-between mt-[30px] rounded-t-[30px] mdmin:hidden"
     >
       <div class="mt-[29px] ml-[29px]">
-        <router-link to="/"
-          ><div class="font-bold text-[25px] text-[#101010]">
-            QPICK
-          </div></router-link
-        >
+        <router-link to="/"><div class="font-bold text-[25px] text-[#101010]">QPICK</div></router-link>
       </div>
       <div class="mt-[29px]">
         <ul class="flex flex-col gap-[10px]">
-          <li
-            class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-          >
+          <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
             <router-link to="/favorites">Избранное</router-link>
           </li>
-          <li
-            class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-          >
+          <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
             <router-link to="/bag">Корзина</router-link>
           </li>
-          <li
-            class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-          >
+          <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
             <router-link to="/contacts">Контакты</router-link>
           </li>
         </ul>
@@ -41,20 +31,13 @@
       </div>
       <div class="flex gap-[18px] mt-[29px] mr-[26px]">
         <a target="_blank" href="https://vk.com/"
-          ><span
-            class="icon-vk text-[#838383] text-[30px] hover:text-[#FFA542]"
-          ></span
+          ><span class="icon-vk text-[#838383] text-[30px] hover:text-[#FFA542]"></span
         ></a>
         <a target="_blank" href="https://www.instagram.com/"
-          ><span
-            class="icon-Instagram text-[#838383] text-[30px] hover:text-[#FFA542]"
-          ></span
+          ><span class="icon-Instagram text-[#838383] text-[30px] hover:text-[#FFA542]"></span
         ></a>
         <a target="_blank" href="https://web.telegram.org/"
-          ><span
-            class="icon-telegram text-[#838383] text-[30px] hover:text-[#FFA542]"
-          >
-          </span
+          ><span class="icon-telegram text-[#838383] text-[30px] hover:text-[#FFA542]"> </span
         ></a>
       </div>
     </div>
@@ -64,27 +47,17 @@
     >
       <div class="ml-[29px]">
         <div class="mt-[19px]">
-          <router-link to="/"
-            ><div class="font-bold text-[25px] text-[#101010]">
-              QPICK
-            </div></router-link
-          >
+          <router-link to="/"><div class="font-bold text-[25px] text-[#101010]">QPICK</div></router-link>
         </div>
         <div class="mt-[9px]">
           <ul class="flex flex-col gap-[10px]">
-            <li
-              class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-            >
+            <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
               <router-link to="/favorites">Избранное</router-link>
             </li>
-            <li
-              class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-            >
+            <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
               <router-link to="/bag">Корзина</router-link>
             </li>
-            <li
-              class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]"
-            >
+            <li class="font-normal text-[17px] leading-[21px] hover:text-[#FFA542]">
               <router-link to="/contacts">Контакты</router-link>
             </li>
           </ul>
@@ -101,20 +74,13 @@
       </div>
       <div class="flex gap-[18px] mt-[29px] mr-[26px]">
         <a target="_blank" href="https://vk.com/"
-          ><span
-            class="icon-vk text-[#838383] text-[30px] hover:text-[#FFA542]"
-          ></span
+          ><span class="icon-vk text-[#838383] text-[30px] hover:text-[#FFA542]"></span
         ></a>
         <a target="_blank" href="https://www.instagram.com/"
-          ><span
-            class="icon-Instagram text-[#838383] text-[30px] hover:text-[#FFA542]"
-          ></span
+          ><span class="icon-Instagram text-[#838383] text-[30px] hover:text-[#FFA542]"></span
         ></a>
         <a target="_blank" href="https://web.telegram.org/"
-          ><span
-            class="icon-telegram text-[#838383] text-[30px] hover:text-[#FFA542]"
-          >
-          </span
+          ><span class="icon-telegram text-[#838383] text-[30px] hover:text-[#FFA542]"> </span
         ></a>
       </div>
     </div>
