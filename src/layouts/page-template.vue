@@ -11,7 +11,7 @@ import pageFooter from "./page-footer.vue";
       <slot name="ad"> </slot>
       <slot name="body"> </slot>
       <slot name="footer">
-        <pageFooter />
+        <pageFooter class="mt-auto" />
       </slot>
     </div>
   </div>

@@ -1,14 +1,23 @@
 import { defineStore } from "pinia";
-import { Ref } from "vue";
+import {ref, Ref } from "vue";
 
+// interface state{
+//   favorites: Iproduct[] | []
+//   favoritesCount: Ref<number>
+// }
+
+// TODO добавить типизацию
+import { type Iproduct } from '../types'
 export const useFavorites = defineStore("favorites", {
   state: (): any => ({
-    favorites: [],
+    favorites: [] as Iproduct[] | [] ,
+    favoritesCount: ref(0),
   }),
   getters: {},
   actions: {
-    setFavoritesTitle(title: { name: string; rating: number; cost: number; oldCost: string; id: string; active: Ref<boolean> }) {
-      this.favorites.push(title);
+    setFavoritesTitle(product:Iproduct ) {
+      this.favoritesCount = this.favorites.length || 0;
+      this.favorites = [...this.favorites, product];
     },
   },
 });

@@ -1,0 +1,1 @@
+export type { Iproduct } from './product-model'
