@@ -13,7 +13,156 @@ body {
 }
 
 @layer components {
-  body1 {
-    @apply font-medium text-[15px] leading-[18px];
+  .adBlockStyle {
+    @apply flex items-center justify-center w-[280px] h-[85px] rounded-[30px] bg-black;
+  }
+  .adBlockTextStyle {
+    @apply font-semibold text-[12px] text-white;
+  }
+  .cardsHeaderTxtStyle {
+    @apply text-[#838383] font-semibold text-[10px] leading-[0px];
+  }
+  .CardStyle {
+    @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end;
+  }
+  .upCardTxtStyle {
+    @apply font-semibold text-[7px];
+  }
+  .clickedIconHeard {
+    @apply block mr-[52px] mb-[38px] cursor-pointer bg-red-700 text-[6px];
+  }
+  .noneClickedIconHeard {
+    @apply block mr-[52px] mb-[38px] cursor-pointer hover:text-red-700 text-[6px];
+  }
+  .middleAndBottomCardTxtStyle {
+    @apply font-semibold text-[5px] leading-[10px];
+  }
+  .middleAndBottomCardTxtCostStyle {
+    @apply font-semibold text-[5px] leading-[2px] text-[#FFCE7F];
+  }
+  .locationMiddleCard {
+    @apply flex items-center gap-[5px];
+  }
+  .choosePhoneCardStyle {
+    @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)];
+  }
+  .choosePhoneCardListTxtStyle{
+    @apply font-medium text-[10px] leading-[21px] text-[#1C1C27] hover:text-[#FFA542;] cursor-pointer
+  }
+  .choosePhoneCardListSelectActive{
+    @apply transform rotate-180 bg-[#EAEAEA] cursor-pointer
+  }
+  .choosePhoneCardListSelectInactive{
+    @apply bg-[#EAEAEA] cursor-pointer
+  }
+  .choosePhoneCardListSelect{
+    @apply w-[60px] h-[125px] bg-[#EAEAEA] block
+  }
+  .choosePhoneCardListSelectValueTxt{
+    @apply w-[60px] font-medium text-[7px] leading-[18px] text-[#101010] hover:text-[#FFA542;] cursor-pointer
+  }
+  .favoritesAndBagCircleStyle{
+    @apply ml-[-3px] absolute rounded-full bg-[#FFA542] w-[5px] h-[5px] pl-[1.6px] text-white top-[15px] font-medium text-[3.7px]
+  }
+  .footerMenuStyle{
+    @apply font-medium text-[6px] leading-[0px] hover:text-[#FFA542]
+  }
+  .footerIconsStyle{
+    @apply text-[#838383] text-[8px] hover:text-[#FFA542]
+  }
+  .footerMenuLangStyle{
+    @apply font-medium text-[5px] leading-[18px] text-[#101010]
+  }
+
+
+
+
+  .favoritesTxtInFavoritsPage{
+    @apply mt-[9px] font-semibold text-[10px] leading-[24px]
+  }
+  .catalogBtnStyle{
+    @apply bg-[#101010] w-[140px] h-[25px] text-white rounded-[20px] text-[10px]
+  }
+  .catalogTxtStyle{
+    @apply font-normal text-[8px] leading-[24px] text-[#838383]
+  }
+  .catalogMainTxt{
+    @apply font-medium text-[20px] leading-[37px] text-[#101010]
+  }
+
+  /* adaptive */
+  .lgAdBlock{
+    @apply w-[768px] h-[197px]
+  }
+  .lgAdBlockTxtStyle{
+    @apply font-semibold text-[30px] leading-[37px] items-center
+  }
+  .lgHeaderPhoneLogo{
+    @apply text-[14px] mt-[10px]
+  }
+  .lgHeaderChoosePhoneCardStyle{
+    @apply w-[255px] h-[300px] top-[60px]
+  }
+  .lgHeaderChoosePhoneCardTxtStyle{
+    @apply text-[17px] leading-[21px]
+  }
+  .lgHeaderChoosePhoneCardListSelect{
+    @apply ml-[46px] mb-[26px] mt-[2px]
+  }
+  .lgHeaderChoosePhoneCardListSelectValueTxt{
+    @apply text-[15px] leading-[18px] w-[140px]
+  }
+  .lgFavoritesAndBagCircleStyle{
+    @apply w-[17px] h-[17px] text-[12px] pl-[5px] 
+  }
+  .lgHeaderIcons{
+    @apply gap-[25px] ml-[300px]
+  }
+  .lgCardsHeaderTxtStyle{
+    @apply text-[20px] leading-[24px]
+  }
+  .lgCardStyle{
+    @apply w-[235px] h-[300px]
+  }
+  .lgUpCardTxtStyle{
+    @apply text-[17px] leading-[21px]
+  }
+  .lgMiddleAndBottomCardTxtStyle{
+    @apply text-[17px] leading-[21px]
+  }
+  .lgMiddleAndBottomCardTxtCostStyle{
+    @apply text-[13px] leading-[16px]
+  }
+  .lgPositionIconHeart{
+    @apply mr-[200px] text-[20px] mb-[200px]
+  }
+  .lgFooter{
+    @apply w-[768px] h-[149px]
+  }
+  .lgFooterLangStyle{
+    @apply mt-[12px] gap-[10px]
+  }
+  .mdCardStyle{
+    @apply w-[350px] h-[400px]
+  }
+  .mdPositionIconHeart{
+   @apply mr-[300px] text-[20px] mb-[290px]
+  }
+
+
+
+
+
+  .lgFavoritesTxtInFavoritsPage{
+    @apply text-[20px] mt-[29px] mb-[21px]
+  }
+  .lgCatalogBtnStyle{
+    @apply bg-[#101010] w-[540px] h-[65px] mb-[103px] mt-[30px] text-white rounded-[20px] text-[20px]
+  }
+  .lgCatalogTxtStyle{
+    @apply font-normal text-[20px] leading-[24px] text-[#838383]
+  }
+  .lgCatalogMainTxt{
+    @apply font-medium text-[30px] leading-[37px] mt-[30px] text-[#101010]
   }
 }
