@@ -4,8 +4,8 @@ export  interface Iproduct {
     name: string;
     rating: number;
     cost: number;
-    oldCost: string;
+    oldCost: number;
     id:string
-    active:  Ref<boolean>
+    isFavorive:  Ref<boolean>
 }
  

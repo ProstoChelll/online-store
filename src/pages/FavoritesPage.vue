@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFavorites } from "../store/favorites";
 import { PageTemplate } from "../layouts";
-import { Headphones, WirelessHeadphones } from "../components";
+import {} from "../components";
 
 const favorites = useFavorites();
 
@@ -11,9 +11,9 @@ console.log(favorites.favorites);
   <PageTemplate>
     <template #header><span></span></template>
     <template #body>
-      <h2 class="favoritesTxtInFavoritsPage lg:lgFavoritesTxtInFavoritsPage">Избранное</h2>
-      <Headphones />
-      <WirelessHeadphones />
+      <h2 class="favoritesTxtInFavoritsPage lg:lgFavoritesTxtInFavoritsPage">
+        Избранное
+      </h2>
     </template>
     <template #footer></template>
   </PageTemplate>
