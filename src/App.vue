@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Header } from "../src/layouts/allLayout";
+import { Header } from "./layouts";
 </script>
 
 <template>

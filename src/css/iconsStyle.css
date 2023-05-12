@@ -28,6 +28,7 @@
 .icon-RU:before {
   content: "\e901";
   color: #838383;
+  font-size: 8px;
 }
 .icon-basket:before {
   content: "\e900";

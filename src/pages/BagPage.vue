@@ -2,7 +2,8 @@
 import { onMounted } from "vue";
 import { useStore } from "../store/store";
 
-import { PageTemplate } from "../layouts/allLayout";
+import { PageTemplate } from "../layouts";
+import { emptyBag } from "../components";
 const store = useStore();
 
 onMounted(() => {
@@ -12,6 +13,7 @@ onMounted(() => {
 <template>
   <PageTemplate>
     <template #header><span></span></template>
+    <template #body><emptyBag /> </template>
     <template #footer></template>
   </PageTemplate>
 </template>
