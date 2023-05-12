@@ -1,8 +1,6 @@
-import { ref } from "vue";
-const imageGlassCover = ref("./glassCover.png");
-const imageLeatherCover = ref("./leatherCover.png");
-const imageSiliconeCover = ref("./glassCover.png");
+export {default as   imageGlassCover} from './glassCover.png'
+export {default as   imageLeatherCover} from './leatherCover.png'
+export {default as   imageSiliconeCover} from './siliconeCover.png'
+ 
 
-const arr = [imageGlassCover, imageLeatherCover, imageSiliconeCover];
-
-export default arr;
+ 
