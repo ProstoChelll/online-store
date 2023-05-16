@@ -1,87 +1,27 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
 import { AdBlock, CardList, CardProduct, CardCategory } from "../components";
-import { ref } from "vue";
+import { useHeadphones } from "../store/HeadphonesData";
+import { useCovers } from "../store/CoversData";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 
-import { type Iproduct } from "@/types/index.ts";
+const headphones = useHeadphones();
+const headphonesList = headphones.headphonesData;
 
-const coversList: Iproduct[] = [
-  {
-    name: "Apple BYZ S852I",
-    rating: 4.7,
-    cost: 2927,
-    oldCost: 3527,
-    id: "AppleBYZS852I",
-    isFavorive: ref(false),
-  },
-];
+const covers = useCovers();
+const coversList = covers.coversList;
 
-const headphonesList: Iproduct[] = [
-  { name: "", rating: 0, cost: 0, oldCost: 0, id: "", isFavorive: ref(false) },
-  {
-    name: "Apple BYZ S852I",
-    rating: 4.7,
-    cost: 2927,
-    oldCost: 3527,
-    id: "AppleBYZS852I",
-    isFavorive: ref(false),
-  },
-  {
-    name: "Apple EarPods",
-    rating: 4.5,
-    cost: 2327,
-    oldCost: 0,
-    id: "AppleEarPods",
-    isFavorive: ref(false),
-  },
-  {
-    name: "Apple EarPods",
-    rating: 4.5,
-    cost: 2327,
-    oldCost: 0,
-    id: "AppleEarPods",
-    isFavorive: ref(false),
-  },
-  {
-    name: "Apple BYZ S852I",
-    rating: 4.7,
-    cost: 2327,
-    oldCost: 3527,
-    id: "AppleBYZS852I_1",
-    isFavorive: ref(false),
-  },
-  {
-    name: "Apple EarPods",
-    rating: 4.5,
-    cost: 2327,
-    oldCost: 0,
-    id: "AppleEarPods_1",
-    isFavorive: ref(false),
-  },
-  {
-    name: "Apple EarPods",
-    rating: 4.5,
-    cost: 2327,
-    oldCost: 0,
-    id: "AppleEarPods_1",
-    isFavorive: ref(false),
-  },
-];
-const wirelessHeadphonesList: Iproduct[] = [
-  {
-    name: "Apple BYZ S852I",
-    rating: 4.7,
-    cost: 2927,
-    oldCost: 3527,
-    id: "AppleBYZS852I",
-    isFavorive: ref(false),
-  },
-];
+const wirelessHeadphones = useWirelessHeadphones();
+const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
 
-function editHeadphones(id: string) {
-  for (let i = 0; i < headphonesList.length; i++) {
-    if (headphonesList[i].id === id) {
-      headphonesList[i].isFavorive.value = !headphonesList[i].isFavorive.value;
+function toogleIconHeart(id: string, data: any) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].id === id) {
+      if (data == headphonesList) {
+        headphones.tooggleIcons(i);
+      } else {
+        wirelessHeadphones.tooggleIcons(i);
+      }
     }
   }
 }
@@ -90,47 +30,38 @@ function editHeadphones(id: string) {
 <template>
   <PageTemplate>
     <template #header><span></span></template>
-    <template #ad><AdBlock class="mt-[22px] mb-11" /></template>
+    <template #ad><AdBlock /></template>
     <template #body>
       <CardList title="Чехлы">
         <template v-for="item in coversList">
-          <CardCategory :name="item.name" :id="item.id" />
+          <CardCategory :img="item.img" :name="item.name" :id="item.id" />
         </template>
       </CardList>
       <CardList title="Наушники">
         <template v-for="item in headphonesList">
           <CardProduct
+            :img="item.img"
             :name="item.name"
             :rating="item.rating"
             :cost="item.cost"
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @click="editHeadphones(item.id)"
+            @clicked="toogleIconHeart(item.id, headphonesList)"
           />
         </template>
       </CardList>
       <CardList title="Беспроводные наушники ">
         <template v-for="item in wirelessHeadphonesList">
           <CardProduct
+            :img="item.img"
             :name="item.name"
             :rating="item.rating"
             :cost="item.cost"
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-          />
-        </template>
-      </CardList>
-      <CardList title="Беспроводные наушники ">
-        <template v-for="item in wirelessHeadphonesList">
-          <CardProduct
-            :name="item.name"
-            :rating="item.rating"
-            :cost="item.cost"
-            :oldCost="item.oldCost"
-            :id="item.id"
-            :isFavorive="item.isFavorive"
+            @clicked="toogleIconHeart(item.id, wirelessHeadphonesList)"
           />
         </template>
       </CardList>

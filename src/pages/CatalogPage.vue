@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
 
-import { onMounted } from "vue";
-import { useStore } from "../store/store";
-const store = useStore();
-
-onMounted(() => {
-  store.setDocumentTitle("Catalog");
-});
 const id = "123";
 </script>
 <template>

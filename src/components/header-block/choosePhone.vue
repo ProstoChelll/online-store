@@ -23,17 +23,17 @@ const dataArr: IArr[] = [
     <div class="flex gap-[25px] mt-[5px] lg:gap-[75px]">
       <router-link to="/"><div class="font-bold text-[11px] text-[#101010] mt-[9px] lg:text-[25px]">QPICK</div></router-link>
       <div class="flex mt-[9px]">
-        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:lgHeaderPhoneLogo"></div>
+        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:lgStylezSizeAndMarginHeaderPhoneLogo"></div>
         <div @click="tog = !tog" class="flex items-center">
           <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
           <select :class="tog == true ? ` choosePhoneCardListSelectActive` : `choosePhoneCardListSelectInactive`"></select>
         </div>
-        <div v-if="tog" class="choosePhoneCardStyle lg:lgHeaderChoosePhoneCardStyle">
+        <div v-if="tog" class="stylezSizeColorDisplayInPhoneCard lg:lgStylezSizeColorDisplayInPhoneCard">
           <div v-for="i in 9" :key="i">
-            <div class="flex justify-between ml-[11px] lg:mt-[10px]">
+            <div class="flex justify-between h-[40px] ml-[11px] lg:mt-[10px]">
               <p
                 @click="dataArr[i].tog.value = !dataArr[i].tog.value"
-                class="choosePhoneCardListTxtStyle lg:lgHeaderChoosePhoneCardTxtStyle"
+                class="stylezTxtStyleInChoosePhoneCardList lg:lgStylezTxtStyleInchoosePhoneCardList"
               >
                 {{ dataArr[i].name }}
               </p>
@@ -48,15 +48,29 @@ const dataArr: IArr[] = [
             </div>
             <div
               v-if="dataArr[i].tog.value"
-              class="choosePhoneCardListSelect mt-[4px] ml-[10px] lg:lgHeaderChoosePhoneCardListSelect"
+              class="stylezSizeColorInChoosePhoneCardListSelect mt-[4px] ml-[10px] lg:lgHeaderChoosePhoneCardListSelect"
             >
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 12</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 12</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 13</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
-              <p class="choosePhoneCardListSelectValueTxt lg:lgHeaderChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 12
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 12 Max
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 12 Pro Max
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 13
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 13 Max
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 13 Pro Max
+              </p>
+              <p class="stylezSizeColorInchoosePhoneCardListSelectValueTxt lg:lgStylezHeaderChoosePhoneCardListSelectValueTxt">
+                iPhone 14
+              </p>
             </div>
           </div>
         </div>

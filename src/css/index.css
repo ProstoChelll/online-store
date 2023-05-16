@@ -13,40 +13,40 @@ body {
 }
 
 @layer components {
-  .adBlockStyle {
-    @apply flex items-center justify-center w-[280px] h-[85px] rounded-[30px] bg-black;
+  .stylizSizeColorDisplayInAdBlockStyle {
+    @apply flex items-center justify-center w-[280px] h-[85px] rounded-[30px] bg-black mt-[22px] mb-[20px];
   }
-  .adBlockTextStyle {
+  .stylizTextStyleInAdBlock {
     @apply font-semibold text-[12px] text-white;
   }
-  .cardsHeaderTxtStyle {
+  .stylezHeaderTxtStyleInCards {
     @apply text-[#838383] font-semibold text-[10px] leading-[0px];
   }
-  .CardStyle {
+  .stylizSizeColorDisplayCard {
     @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end;
   }
   .upCardTxtStyle {
     @apply font-semibold text-[7px];
   }
   .clickedIconHeard {
-    @apply block mr-[52px] mb-[38px] cursor-pointer bg-red-700 text-[6px];
+    @apply block mr-[52px] pt-[5px] cursor-pointer bg-red-700 text-[6px];
   }
   .noneClickedIconHeard {
-    @apply block mr-[52px] mb-[38px] cursor-pointer hover:text-red-700 text-[6px];
+    @apply block mr-[52px] pt-[5px] cursor-pointer hover:text-red-700 text-[6px];
   }
-  .middleAndBottomCardTxtStyle {
+  .stylezTxtStylInMiddleAndBottomCard {
     @apply font-semibold text-[5px] leading-[10px];
   }
-  .middleAndBottomCardTxtCostStyle {
+  .stylezTxtCostStylInMiddleAndBottomCard {
     @apply font-semibold text-[5px] leading-[2px] text-[#FFCE7F];
   }
-  .locationMiddleCard {
+  .stylizDisplayInMiddleCard {
     @apply flex items-center gap-[5px];
   }
-  .choosePhoneCardStyle {
+  .stylezSizeColorDisplayInPhoneCard {
     @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)];
   }
-  .choosePhoneCardListTxtStyle{
+  .stylezTxtStyleInChoosePhoneCardList{
     @apply font-medium text-[10px] leading-[21px] text-[#1C1C27] hover:text-[#FFA542;] cursor-pointer
   }
   .choosePhoneCardListSelectActive{
@@ -55,13 +55,13 @@ body {
   .choosePhoneCardListSelectInactive{
     @apply bg-[#EAEAEA] cursor-pointer
   }
-  .choosePhoneCardListSelect{
+  .stylezSizeColorInChoosePhoneCardListSelect{
     @apply w-[60px] h-[125px] bg-[#EAEAEA] block
   }
-  .choosePhoneCardListSelectValueTxt{
+  .stylezSizeColorInchoosePhoneCardListSelectValueTxt{
     @apply w-[60px] font-medium text-[7px] leading-[18px] text-[#101010] hover:text-[#FFA542;] cursor-pointer
   }
-  .favoritesAndBagCircleStyle{
+  .stylezSizeColorInfavoritesAndBagCircle{
     @apply ml-[-3px] absolute rounded-full bg-[#FFA542] w-[5px] h-[5px] pl-[1.6px] text-white top-[15px] font-medium text-[3.7px]
   }
   .footerMenuStyle{
@@ -91,50 +91,50 @@ body {
   }
 
   /* adaptive */
-  .lgAdBlock{
+  .lgStylizSizeColorDisplayInAdBlockStyle{
     @apply w-[768px] h-[197px]
   }
-  .lgAdBlockTxtStyle{
+  .lgStylizTextStyleInAdBlock{
     @apply font-semibold text-[30px] leading-[37px] items-center
   }
-  .lgHeaderPhoneLogo{
+  .lgStylezSizeAndMarginHeaderPhoneLogo{
     @apply text-[14px] mt-[10px]
   }
-  .lgHeaderChoosePhoneCardStyle{
+  .lgStylezSizeColorDisplayInPhoneCard{
     @apply w-[255px] h-[300px] top-[60px]
   }
   .lgHeaderChoosePhoneCardTxtStyle{
     @apply text-[17px] leading-[21px]
   }
-  .lgHeaderChoosePhoneCardListSelect{
-    @apply ml-[46px] mb-[26px] mt-[2px]
+  .lgStylezTxtStyleInchoosePhoneCardList{
+    @apply ml-[46px] mb-[26px] mt-[2px] text-[18px]
   }
-  .lgHeaderChoosePhoneCardListSelectValueTxt{
+  .lgStylezHeaderChoosePhoneCardListSelectValueTxt{
     @apply text-[15px] leading-[18px] w-[140px]
   }
-  .lgFavoritesAndBagCircleStyle{
+  .lgStylezSizeColorInfavoritesAndBagCircle{
     @apply w-[17px] h-[17px] text-[12px] pl-[5px] 
   }
   .lgHeaderIcons{
     @apply gap-[25px] ml-[300px]
   }
-  .lgCardsHeaderTxtStyle{
+  .lgStylezHeaderTxtStyleInCards{
     @apply text-[20px] leading-[24px]
   }
-  .lgCardStyle{
+  .lgStylizSizeColorDisplayCard{
     @apply w-[235px] h-[300px]
   }
   .lgUpCardTxtStyle{
     @apply text-[17px] leading-[21px]
   }
-  .lgMiddleAndBottomCardTxtStyle{
+  .lgStylezTxtStylInMiddleAndBottomCard{
     @apply text-[17px] leading-[21px]
   }
-  .lgMiddleAndBottomCardTxtCostStyle{
+  .lgStylezTxtCostStylInMiddleAndBottomCard{
     @apply text-[13px] leading-[16px]
   }
   .lgPositionIconHeart{
-    @apply mr-[200px] text-[20px] mb-[200px]
+    @apply mr-[200px] text-[20px]
   }
   .lgFooter{
     @apply w-[768px] h-[149px]
@@ -142,11 +142,11 @@ body {
   .lgFooterLangStyle{
     @apply mt-[12px] gap-[10px]
   }
-  .mdCardStyle{
+  .mdStylizSizeColorDisplayCard{
     @apply w-[350px] h-[400px]
   }
   .mdPositionIconHeart{
-   @apply mr-[300px] text-[20px] mb-[290px]
+   @apply mr-[300px] text-[20px] mb-[95px]
   }
 
 

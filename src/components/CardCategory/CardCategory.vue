@@ -1,22 +1,20 @@
 <script setup lang="ts">
 interface Props {
+  img: string;
   id: string;
   name: string;
 }
-
 const props = defineProps<Props>();
 </script>
 <template>
-  <div class="CardStyle lg:lgCardStyle md:mdCardStyle" :id="props.id">
-    <div class="locationMiddleCard lg:gap-[20px] md:gap-[140px]">
-      <div>
-        <p
-          class="middleAndBottomCardTxtStyle mt-5 lg:lgMiddleAndBottomCardTxtStyle"
-        >
-          {{ props.name }}
-        </p>
-      </div>
-      <div></div>
+  <div class="stylizSizeColorDisplayCard lg:lgStylizSizeColorDisplayCard md:mdStylizSizeColorDisplayCard" :id="props.id">
+    <div class="w-[34px] lg:w-[120px] md:w-[151px]">
+      <img :src="props.img" />
+    </div>
+    <div>
+      <p class="upCardTxtStyle mt-5 lg:lgUpCardTxtStyle">
+        {{ props.name }}
+      </p>
     </div>
   </div>
 </template>
