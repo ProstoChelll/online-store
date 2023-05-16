@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
-
-import { onMounted } from "vue";
-import { useStore } from "../store/store";
-const store = useStore();
-
-onMounted(() => {
-  store.setDocumentTitle("Contacts");
-  console.log(store.documentTitle);
-});
 </script>
 <template>
   <PageTemplate>

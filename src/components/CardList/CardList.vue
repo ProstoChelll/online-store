@@ -6,12 +6,12 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-  <div class="mt-[30px] mb-[10px]">
-    <p class="cardsHeaderTxtStyle lg:lgCardsHeaderTxtStyle">
+  <div class="mb-[25px] mt-[15px] lg:mt-[45px]">
+    <p class="stylezHeaderTxtStyleInCards lg:lgStylezHeaderTxtStyleInCards">
       {{ props.title }}
     </p>
   </div>
-  <div class="flex gap-[30px] mb-[30px] flex-wrap">
+  <div class="flex justify-center w-[280px] flex-wrap gap-[30px] mb-[10px] lg:w-[768px] md:w-[1140px]">
     <slot></slot>
   </div>
 </template>

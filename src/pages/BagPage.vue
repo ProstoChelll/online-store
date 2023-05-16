@@ -1,14 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { useStore } from "../store/store";
-
 import { PageTemplate } from "../layouts";
 import { emptyBag } from "../components";
-const store = useStore();
-
-onMounted(() => {
-  store.setDocumentTitle("bag");
-});
 </script>
 <template>
   <PageTemplate>
