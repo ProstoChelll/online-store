@@ -10,11 +10,21 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits(["clicked"])
+const emit = defineEmits(["click"])
+
 </script>
 <template> 
-  <div class="stylizSizeColorDisplayCard lg:lgStylizSizeColorDisplayCard md:mdStylizSizeColorDisplayCard"  :id="props.id">
-    <span @click="emit('clicked')"  :class="props.isFavorive ? `icon-heart before: clickedIconHeard lg:lgPositionIconHeart md:mdPositionIconHeart`: `icon-heart before: noneClickedIconHeard lg:lgPositionIconHeart md:mdPositionIconHeart`" ></span>
+  <div  :class="$style.card"   :id="props.id"> 
+   <span @click="emit('click')"  
+ 
+   :class="[
+    $style.heart_icon,
+  
+  {
+    'text-red-700': props.isFavorive,
+    'icon-heart':true,
+  }
+   ]" />
     <img class="h-[209px] w-[47px] lg:w-[194px]" :src="props.img" />
     <div class="stylizDisplayInMiddleCard lg:gap-[20px] md:gap-[140px]">
       <div>
@@ -28,4 +38,14 @@ const emit = defineEmits(["clicked"])
     </div>
   </div>
 </template>
+<style module scoped>
+.card{
+  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative;
  
+}
+.heart_icon{
+  @apply cursor-pointer text-[22px] absolute left-[22px] top-[15px] hover:text-red-700;
+} 
+ 
+ 
+</style>
