@@ -74,5 +74,12 @@ export const useHeadphones = defineStore("Headphones", {
     tooggleIcons(id: number): void {
       this.headphonesData[id].isFavorive = !this.headphonesData[id].isFavorive;
     },
+    toogleFavoritesIcons(id: string): void {
+      for (let i = 0; i <= this.headphonesData.length; i++) {
+        if (id == this.headphonesData[i].id) {
+          this.headphonesData[i].isFavorive = !this.headphonesData[i].isFavorive;
+        }
+      }
+    },
   },
 });

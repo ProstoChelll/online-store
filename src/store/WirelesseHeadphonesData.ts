@@ -9,7 +9,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         rating: 4.7,
         cost: 9527,
         oldCost: 0,
-        id: "AppleAirPods",
+        id: "AppleAirPods_1",
         isFavorive: false,
       },
       {
@@ -18,7 +18,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         rating: 4.7,
         cost: 6527,
         oldCost: 0,
-        id: "GERLAXGH04",
+        id: "GERLAXGH042_2",
         isFavorive: false,
       },
       {
@@ -27,7 +27,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         rating: 4.7,
         cost: 7527,
         oldCost: 0,
-        id: "BOROFONEBO4",
+        id: "BOROFONEBO4_3",
         isFavorive: false,
       },
     ],
@@ -46,6 +46,13 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
   actions: {
     tooggleIcons(id: number): void {
       this.wirelessHeadphonesList[id].isFavorive = !this.wirelessHeadphonesList[id].isFavorive;
+    },
+    toogleFavoritesIcons(id: string): void {
+      for (let i = 0; i <= this.wirelessHeadphonesList.length; i++) {
+        if (id == this.wirelessHeadphonesList[i].id) {
+          this.wirelessHeadphonesList[i].isFavorive = !this.wirelessHeadphonesList[i].isFavorive;
+        }
+      }
     },
   },
 });
