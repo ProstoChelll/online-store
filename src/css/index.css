@@ -22,18 +22,13 @@ body {
   .stylezHeaderTxtStyleInCards {
     @apply text-[#838383] font-semibold text-[10px] leading-[0px];
   }
-  .stylizSizeColorDisplayCard {
-    @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end;
+  .lgPositionIconHeart{
+    @apply mr-[200px] text-[20px]
   }
   .upCardTxtStyle {
     @apply font-semibold text-[7px];
   }
-  .clickedIconHeard {
-    @apply block mr-[52px] pt-[5px] cursor-pointer bg-red-700 text-[6px];
-  }
-  .noneClickedIconHeard {
-    @apply block mr-[52px] pt-[5px] cursor-pointer hover:text-red-700 text-[6px];
-  }
+
   .stylezTxtStylInMiddleAndBottomCard {
     @apply font-semibold text-[5px] leading-[10px];
   }
@@ -121,9 +116,7 @@ body {
   .lgStylezHeaderTxtStyleInCards{
     @apply text-[20px] leading-[24px]
   }
-  .lgStylizSizeColorDisplayCard{
-    @apply w-[235px] h-[300px]
-  }
+
   .lgUpCardTxtStyle{
     @apply text-[17px] leading-[21px]
   }
@@ -133,18 +126,14 @@ body {
   .lgStylezTxtCostStylInMiddleAndBottomCard{
     @apply text-[13px] leading-[16px]
   }
-  .lgPositionIconHeart{
-    @apply mr-[200px] text-[20px]
-  }
+
   .lgFooter{
     @apply w-[768px] h-[149px]
   }
   .lgFooterLangStyle{
     @apply mt-[12px] gap-[10px]
   }
-  .mdStylizSizeColorDisplayCard{
-    @apply w-[350px] h-[400px]
-  }
+
   .mdPositionIconHeart{
    @apply mr-[300px] text-[20px] mb-[95px]
   }

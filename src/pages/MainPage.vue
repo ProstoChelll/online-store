@@ -14,7 +14,8 @@ const coversList = covers.coversList;
 const wirelessHeadphones = useWirelessHeadphones();
 const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
 
-function toogleIconHeart(id: string, data: any) {
+function favoriteHandler(id: string, data: any) {
+  console.log(id);
   for (let i = 0; i < data.length; i++) {
     if (data[i].id === id) {
       if (data == headphonesList) {
@@ -47,7 +48,7 @@ function toogleIconHeart(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @clicked="toogleIconHeart(item.id, headphonesList)"
+            @click="favoriteHandler(item.id, headphonesList)"
           />
         </template>
       </CardList>
@@ -61,7 +62,7 @@ function toogleIconHeart(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @clicked="toogleIconHeart(item.id, wirelessHeadphonesList)"
+            @click="favoriteHandler(item.id, wirelessHeadphonesList)"
           />
         </template>
       </CardList>
