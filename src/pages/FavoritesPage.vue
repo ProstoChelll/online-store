@@ -3,27 +3,25 @@ import { PageTemplate } from "../layouts";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 import { CardList, CardProduct } from "../components";
-import { ref } from "vue";
 
 const headphones = useHeadphones();
-let headphonesList = ref(headphones.getActiveCard);
+let headphonesList = headphones.getActiveCard;
 
 const wirelessHeadphones = useWirelessHeadphones();
-let wirelessHeadphonesList = ref(wirelessHeadphones.getActiveCard);
+let wirelessHeadphonesList = wirelessHeadphones.getActiveCard;
 
 function toogleIconHeart(id: string, data: any) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].id === id) {
-      if (data == headphonesList.value) {
-        headphones.getActiveCard;
-        headphones.tooggleIcons(i);
+      if (data == headphones.getActiveCard) {
+        headphones.toogleFavoritesIcons(id);
       } else {
-        wirelessHeadphones.tooggleIcons(i);
-        wirelessHeadphones.getActiveCard;
+        wirelessHeadphones.toogleFavoritesIcons(id);
       }
     }
   }
-  console.log(headphonesList.value);
+  console.log(headphones.getActiveCard);
+  console.log(id);
 }
 </script>
 <template>
