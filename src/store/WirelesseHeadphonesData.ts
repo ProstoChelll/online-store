@@ -48,6 +48,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
       this.wirelessHeadphonesList[id].isFavorive = !this.wirelessHeadphonesList[id].isFavorive;
     },
     toogleFavoritesIcons(id: string): void {
+      console.log(id);
       for (let i = 0; i <= this.wirelessHeadphonesList.length; i++) {
         if (id == this.wirelessHeadphonesList[i].id) {
           this.wirelessHeadphonesList[i].isFavorive = !this.wirelessHeadphonesList[i].isFavorive;

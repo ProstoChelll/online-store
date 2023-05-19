@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
-import { AdBlock, CardList, CardProduct, CardCategory } from "../components";
-import { useHeadphones } from "../store/HeadphonesData";
-import { useCovers } from "../store/CoversData";
-import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { AdBlock, CardList, CardProduct, CardCategory, saveNotice } from "../components";
+import { useHeadphones } from "../store/headphonesData";
+import { useCovers } from "../store/coversData";
+import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
+import { ref } from "vue";
 
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
@@ -15,7 +16,6 @@ const wirelessHeadphones = useWirelessHeadphones();
 const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
 
 function favoriteHandler(id: string, data: any) {
-  console.log(id);
   for (let i = 0; i < data.length; i++) {
     if (data[i].id === id) {
       if (data == headphonesList) {
@@ -26,6 +26,16 @@ function favoriteHandler(id: string, data: any) {
     }
   }
 }
+
+let saveToogle = ref(false);
+
+function tooggleSave() {
+  saveToogle.value = !saveToogle.value;
+  setTimeout(() => {
+    saveToogle.value = !saveToogle.value;
+  }, 1100);
+}
+console.log(saveToogle);
 </script>
 
 <template>
@@ -33,6 +43,7 @@ function favoriteHandler(id: string, data: any) {
     <template #header><span></span></template>
     <template #ad><AdBlock /></template>
     <template #body>
+      <saveNotice :click="saveToogle" />
       <CardList title="Чехлы">
         <template v-for="item in coversList">
           <CardCategory :img="item.img" :name="item.name" :id="item.id" />
@@ -48,7 +59,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @click="favoriteHandler(item.id, headphonesList)"
+            @click="favoriteHandler(item.id, headphonesList), tooggleSave()"
           />
         </template>
       </CardList>
@@ -62,7 +73,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @click="favoriteHandler(item.id, wirelessHeadphonesList)"
+            @click="favoriteHandler(item.id, wirelessHeadphonesList), tooggleSave()"
           />
         </template>
       </CardList>

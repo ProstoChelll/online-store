@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { PageTemplate } from "../layouts";
-import { useHeadphones } from "../store/HeadphonesData";
-import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { useHeadphones } from "../store/headphonesData";
+import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
 import { CardList, CardProduct } from "../components";
 
 const headphones = useHeadphones();
@@ -27,9 +27,7 @@ function favoriteHandler(id: string, data: any) {
   <PageTemplate>
     <template #header><span></span></template>
     <template #body>
-      <h2 class="favoritesTxtInFavoritsPage lg:lgFavoritesTxtInFavoritsPage">
-        Избранное
-      </h2>
+      <h2 class="MainTxt">Избранное</h2>
       <CardList v-if="headphonesList.length > 0" title="Наушники">
         <template v-for="item in headphonesList">
           <CardProduct
@@ -44,10 +42,7 @@ function favoriteHandler(id: string, data: any) {
           />
         </template>
       </CardList>
-      <CardList
-        v-if="wirelessHeadphonesList.length > 0"
-        title="Беспроводные наушники "
-      >
+      <CardList v-if="wirelessHeadphonesList.length > 0" title="Беспроводные наушники ">
         <template v-for="item in wirelessHeadphonesList">
           <CardProduct
             :img="item.img"
@@ -66,4 +61,8 @@ function favoriteHandler(id: string, data: any) {
   </PageTemplate>
 </template>
 
-<style module scoped></style>
+<style scoped>
+.MainTxt {
+  @apply mt-[9px] font-semibold text-[10px] leading-[24px] lg:text-[20px] lg:mt-[29px] lg:mb-[21px];
+}
+</style>

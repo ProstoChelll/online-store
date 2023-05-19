@@ -14,7 +14,7 @@ const emit = defineEmits(["click"])
 
 </script>
 <template> 
-  <div  :class="$style.card"   :id="props.id"> 
+  <div :class="$style.card" :id="props.id"> 
    <span @click="emit('click')"  
  
    :class="[
@@ -25,27 +25,39 @@ const emit = defineEmits(["click"])
     'icon-heart':true,
   }
    ]" />
-    <img class="h-[209px] w-[47px] lg:w-[194px]" :src="props.img" />
-    <div class="stylizDisplayInMiddleCard lg:gap-[20px] md:gap-[140px]">
+    <img class="ProductImage" :src="props.img" />
+    <div class="ProductCardPositionTxt">
       <div>
-        <p class="stylezTxtStylInMiddleAndBottomCard mt-[10px] lg:lgStylezTxtStylInMiddleAndBottomCard">{{ props.name }}</p>
-        <p class="stylezTxtStylInMiddleAndBottomCard mb-[5px] text-[#838383] lg:lgStylezTxtStylInMiddleAndBottomCard"> <span class="icon-star text-[#FFCE7F] mr-[2px]"></span>{{ props.rating }}</p>
+        <p class="ProductCardText mt-[10px]">{{ props.name }}</p>
+        <p class="ProductCardText text-[#838383]"> <span class="icon-star text-[#FFCE7F] "></span>{{ props.rating }}</p>
       </div>
       <div>
-        <p class="stylezTxtStylInMiddleAndBottomCard text-[#FFCE7F] pb-[3px] lg:lgStylezTxtStylInMiddleAndBottomCard">{{ props.cost }} &#8376</p>
-        <p v-if="props.oldCost > 0" class="stylezTxtCostStylInMiddleAndBottomCard mb-[-9px] lg:lgStylezTxtCostStylInMiddleAndBottomCard">{{ props.oldCost }}</p>
+        <p class="ProductCardText text-[#FFCE7F]">{{ props.cost }} &#8376</p>
+        <p v-if="props.oldCost > 0" class="ProductCardCostText mb-[-9px]">{{ props.oldCost }}</p>
       </div>
     </div>
   </div>
 </template>
 <style module scoped>
 .card{
-  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative;
+  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)];
  
 }
 .heart_icon{
-  @apply cursor-pointer text-[22px] absolute left-[22px] top-[15px] hover:text-red-700;
+  @apply cursor-pointer text-[8px] absolute left-[5px] top-[5px] hover:text-red-700 lg:text-[22px] md:left-[22px] md:top-[15px];
 } 
- 
- 
+</style>
+<style scoped>
+.ProductImage{
+  @apply h-[auto_180px] w-[47px] lg:w-[194px] bg-cover md:h-[auto_220px] md:w-[240px];
+}
+.ProductCardPositionTxt{
+  @apply flex items-center gap-[5px] lg:gap-[40px] md:gap-[140px];
+}
+.ProductCardText{
+  @apply font-semibold text-[5px] leading-[10px] lg:text-[17px] lg:leading-[21px];
+}
+.ProductCardCostText{
+  @apply font-semibold text-[5px] leading-[2px] text-[#FFCE7F] lg:text-[13px] lg:leading-[16px];
+}
 </style>
