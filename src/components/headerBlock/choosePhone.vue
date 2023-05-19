@@ -1,0 +1,104 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { type IArr } from "@/types";
+
+let tog = ref(false);
+
+const dataArr: IArr[] = [
+  { name: "", tog: ref(false) },
+  { name: "Apple", tog: ref(false) },
+  { name: "INOI", tog: ref(false) },
+  { name: "Nokia", tog: ref(false) },
+  { name: "Oppo", tog: ref(false) },
+  { name: "Xiaomi", tog: ref(false) },
+  { name: "Realme", tog: ref(false) },
+  { name: "Samsung", tog: ref(false) },
+  { name: "Sony", tog: ref(false) },
+  { name: "Vivo", tog: ref(false) },
+];
+</script>
+
+<template>
+  <slot name="left">
+    <div class="ChooseModelPhone">
+      <router-link to="/"><div class="Logo">QPICK</div></router-link>
+      <div class="flex mt-[9px]">
+        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
+        <div @click="tog = !tog" class="flex items-center">
+          <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
+          <select :class="tog == true ? ` SelectRotate` : `Select`"></select>
+        </div>
+        <transition>
+          <div v-if="tog" class="PhoneCard">
+            <div v-for="i in 9" :key="i">
+              <div class="PhoneCardPosition">
+                <p
+                  @click="dataArr[i].tog.value = !dataArr[i].tog.value"
+                  :class="dataArr[i].tog.value ? `PhoneCardTextActive` : `PhoneCardText`"
+                >
+                  {{ dataArr[i].name }}
+                </p>
+                <select
+                  class="ml-[10px]"
+                  @click="dataArr[i].tog.value = !dataArr[i].tog.value"
+                  :class="dataArr[i].tog.value ? `SelectRotate` : `Select`"
+                ></select>
+              </div>
+              <div v-if="dataArr[i].tog.value" class="MenuProducts">
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Pro Max</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
+                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+              </div>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
+  </slot>
+</template>
+<style scoped>
+.ChooseModelPhone {
+  @apply flex gap-[25px] mt-[5px] lg:gap-[75px];
+}
+.Logo {
+  @apply font-bold text-[11px] text-[#101010] mt-[9px] lg:text-[25px];
+}
+.PhoneCard {
+  @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)] lg:w-[255px] lg:h-[300px] lg:top-[60px];
+}
+.PhoneCardPosition {
+  @apply flex justify-start h-[20px] lg:mt-[10px] lg:h-[40px];
+}
+.PhoneCardText {
+  @apply w-[65px] ml-[4px] font-medium text-[10px] leading-[21px] text-[#1C1C27] hover:text-[#FFA542] cursor-pointer lg:ml-[15px] lg:mt-[2px] lg:text-[18px];
+}
+.PhoneCardTextActive {
+  @apply w-[65px] ml-[4px] text-[#FFA542] font-medium text-[10px] leading-[21px] cursor-pointer lg:ml-[15px] lg:mt-[2px] lg:text-[18px];
+}
+.SelectRotate {
+  @apply transform rotate-180 bg-[#EAEAEA] cursor-pointer h-[20px];
+}
+.Select {
+  @apply bg-[#EAEAEA] cursor-pointer h-[20px];
+}
+.MenuProducts {
+  @apply w-[60px] h-[125px] bg-[#EAEAEA] block mt-[4px] ml-[10px];
+}
+
+/* animation */
+.v-enter-from {
+  top: -300px;
+}
+.v-enter-active {
+  top: 60px;
+  transition: 0.5;
+}
+.v-leave-to {
+  top: -300px;
+  transition: 0.5s;
+}
+</style>
