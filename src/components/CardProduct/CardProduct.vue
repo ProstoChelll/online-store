@@ -1,5 +1,6 @@
 <script setup lang="ts"> 
 interface Props {
+    item:any
     img: string,
     isFavorive: boolean,
     id: string,
@@ -25,11 +26,13 @@ const emit = defineEmits(["click"])
     'icon-heart':true,
   }
    ]" />
+   <router-link :to="`/catalog/:${item.id}`">
     <img class="ProductImage" :src="props.img" />
+  </router-link>
     <div class="ProductCardPositionTxt">
       <div>
         <p class="ProductCardText mt-[10px]">{{ props.name }}</p>
-        <p class="ProductCardText text-[#838383]"> <span class="icon-star text-[#FFCE7F] "></span>{{ props.rating }}</p>
+        <p v-if="props.rating !== 0" class="ProductCardText text-[#838383]"> <span class="icon-star text-[#FFCE7F] "></span>{{ props.rating }}</p>
       </div>
       <div>
         <p class="ProductCardText text-[#FFCE7F]">{{ props.cost }} &#8376</p>
@@ -40,7 +43,7 @@ const emit = defineEmits(["click"])
 </template>
 <style module scoped>
 .card{
-  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)];
+  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer;
  
 }
 .heart_icon{

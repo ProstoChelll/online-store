@@ -51,21 +51,26 @@ console.log(saveToogle);
       </CardList>
       <CardList title="Наушники">
         <template v-for="item in headphonesList">
-          <CardProduct
-            :img="item.img"
-            :name="item.name"
-            :rating="item.rating"
-            :cost="item.cost"
-            :oldCost="item.oldCost"
-            :id="item.id"
-            :isFavorive="item.isFavorive"
-            @click="favoriteHandler(item.id, headphonesList), tooggleSave()"
-          />
+          <router-link :to="`/catalog/:${item.id}`">
+            <CardProduct
+              :item="item"
+              :img="item.img"
+              :name="item.name"
+              :rating="item.rating"
+              :cost="item.cost"
+              :oldCost="item.oldCost"
+              :id="item.id"
+              :isFavorive="item.isFavorive"
+              @click="favoriteHandler(item.id, headphonesList), tooggleSave()"
+            />
+          </router-link>
         </template>
       </CardList>
+
       <CardList title="Беспроводные наушники ">
         <template v-for="item in wirelessHeadphonesList">
           <CardProduct
+            :item="item"
             :img="item.img"
             :name="item.name"
             :rating="item.rating"

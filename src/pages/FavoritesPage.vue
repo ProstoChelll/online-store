@@ -31,6 +31,7 @@ function favoriteHandler(id: string, data: any) {
       <CardList v-if="headphonesList.length > 0" title="Наушники">
         <template v-for="item in headphonesList">
           <CardProduct
+            :item="item"
             :img="item.img"
             :name="item.name"
             :rating="item.rating"
@@ -45,6 +46,7 @@ function favoriteHandler(id: string, data: any) {
       <CardList v-if="wirelessHeadphonesList.length > 0" title="Беспроводные наушники ">
         <template v-for="item in wirelessHeadphonesList">
           <CardProduct
+            :item="item"
             :img="item.img"
             :name="item.name"
             :rating="item.rating"
