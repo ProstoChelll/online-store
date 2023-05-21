@@ -1,4 +1,6 @@
 <script setup lang="ts"> 
+import {ref} from 'vue'
+import  saveNotice  from '../saveNotice/saveNotice.vue'
 interface Props {
     item:any
     img: string,
@@ -13,10 +15,20 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits(["click"])
 
+let saveToogle = ref(false);
+
+ 
+function favoriteHandler (){
+  saveToogle.value = !saveToogle.value;
+  setTimeout(() => {
+    saveToogle.value = !saveToogle.value;
+  }, 1100);
+  emit('click');
+} 
 </script>
 <template> 
   <div :class="$style.card" :id="props.id"> 
-   <span @click="emit('click')"  
+   <span @click="favoriteHandler()"  
  
    :class="[
     $style.heart_icon,
@@ -40,10 +52,14 @@ const emit = defineEmits(["click"])
       </div>
     </div>
   </div>
+  <saveNotice :show="saveToogle" content="Сохранено">
+    
+  </saveNotice>
 </template>
 <style module scoped>
 .card{
-  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer;
+
+  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer transition-all;
  
 }
 .heart_icon{

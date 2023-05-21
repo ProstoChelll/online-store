@@ -23,18 +23,34 @@ const dataArr: IArr[] = [
     <div class="ChooseModelPhone">
       <router-link to="/"><div class="Logo">QPICK</div></router-link>
       <div class="flex mt-[9px]">
-        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
-        <div @click="tog = !tog" class="flex items-center">
-          <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
-          <select :class="tog == true ? ` SelectRotate` : `Select`"></select>
+        <div
+          class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"
+        ></div>
+        <div @click="tog = !tog" class="flex items-center gap-[8px]">
+          <p class="cursor-pointer text-[5px] lg:text-[15px]">
+            Выбрать модель телефона
+          </p>
+
+          <span
+            @click=""
+            :class="{
+              '-rotate-90': tog,
+            }"
+            class="text-[24px] cursor-pointer rotate-90 transition-all"
+            >&lsaquo;</span
+          >
         </div>
-        <transition>
+        <transition name="expand">
           <div v-if="tog" class="PhoneCard">
             <div v-for="i in 9" :key="i">
               <div class="PhoneCardPosition">
                 <p
                   @click="dataArr[i].tog.value = !dataArr[i].tog.value"
-                  :class="dataArr[i].tog.value ? `PhoneCardTextActive` : `PhoneCardText`"
+                  :class="
+                    dataArr[i].tog.value
+                      ? `PhoneCardTextActive`
+                      : `PhoneCardText`
+                  "
                 >
                   {{ dataArr[i].name }}
                 </p>
@@ -45,13 +61,41 @@ const dataArr: IArr[] = [
                 ></select>
               </div>
               <div v-if="dataArr[i].tog.value" class="MenuProducts">
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Pro Max</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
-                <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 12
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 12 Max
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 12 Pro Max
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 13
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 13 Max
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 13 Pro Max
+                </p>
+                <p
+                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                >
+                  iPhone 14
+                </p>
               </div>
             </div>
           </div>
@@ -90,15 +134,18 @@ const dataArr: IArr[] = [
 }
 
 /* animation */
-.v-enter-from {
+.expand-enter-from {
   top: -300px;
+  opacity: 0;
 }
-.v-enter-active {
+.expand-enter-to {
   top: 60px;
-  transition: 0.5;
+  opacity: 1;
+  transition: 0.5s;
 }
-.v-leave-to {
+.expand-leave-to {
   top: -300px;
+  opacity: 0;
   transition: 0.5s;
 }
 </style>

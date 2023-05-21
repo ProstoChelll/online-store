@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
-import { AdBlock, CardList, CardProduct, CardCategory, saveNotice } from "../components";
+import { AdBlock, CardList, CardProduct, CardCategory } from "../components";
 import { useHeadphones } from "../store/headphonesData";
 import { useCovers } from "../store/coversData";
 import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
@@ -26,16 +26,6 @@ function favoriteHandler(id: string, data: any) {
     }
   }
 }
-
-let saveToogle = ref(false);
-
-function tooggleSave() {
-  saveToogle.value = !saveToogle.value;
-  setTimeout(() => {
-    saveToogle.value = !saveToogle.value;
-  }, 1100);
-}
-console.log(saveToogle);
 </script>
 
 <template>
@@ -43,7 +33,6 @@ console.log(saveToogle);
     <template #header><span></span></template>
     <template #ad><AdBlock /></template>
     <template #body>
-      <saveNotice :click="saveToogle" />
       <CardList title="Чехлы">
         <template v-for="item in coversList">
           <CardCategory :img="item.img" :name="item.name" :id="item.id" />
@@ -78,7 +67,7 @@ console.log(saveToogle);
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @click="favoriteHandler(item.id, wirelessHeadphonesList), tooggleSave()"
+            @click="favoriteHandler(item.id, wirelessHeadphonesList)"
           />
         </template>
       </CardList>
