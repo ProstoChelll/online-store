@@ -1,0 +1,13 @@
+/* анимация появления списка */
+/*  <transition name="expand"> */
+.expand-enter-from {
+  top: -300px;
+}
+.expand-enter-to {
+  top: 60px;
+  transition: 0.5s;
+}
+.expand-leave-to {
+  top: -300px;
+  transition: 0.5s;
+}
