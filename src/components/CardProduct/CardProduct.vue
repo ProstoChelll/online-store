@@ -13,22 +13,22 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits(["click"])
+const emit = defineEmits(["click"]) 
 
 let saveToogle = ref(false);
 
  
-function favoriteHandler (){
+function noticeHandler (){
   saveToogle.value = !saveToogle.value;
   setTimeout(() => {
     saveToogle.value = !saveToogle.value;
   }, 1100);
   emit('click');
-} 
+}
 </script>
 <template> 
   <div :class="$style.card" :id="props.id"> 
-   <span @click="favoriteHandler()"  
+   <span @click="noticeHandler()"  
  
    :class="[
     $style.heart_icon,
@@ -37,10 +37,9 @@ function favoriteHandler (){
     'text-red-700': props.isFavorive,
     'icon-heart':true,
   }
-   ]" />
-   <router-link :to="`/catalog/:${item.id}`">
-    <img class="ProductImage" :src="props.img" />
-  </router-link>
+   ]"/>
+   <router-link :to="`/catalog/:${item.id}`" class="link">
+    <img class="ProductImage" :src="`../../${props.img}`" />
     <div class="ProductCardPositionTxt">
       <div>
         <p class="ProductCardText mt-[10px]">{{ props.name }}</p>
@@ -51,14 +50,12 @@ function favoriteHandler (){
         <p v-if="props.oldCost > 0" class="ProductCardCostText mb-[-9px]">{{ props.oldCost }}</p>
       </div>
     </div>
+  </router-link>
   </div>
-  <saveNotice :show="saveToogle" content="Сохранено">
-    
-  </saveNotice>
+  <saveNotice :show="saveToogle" content="Сохранено"/>
 </template>
 <style module scoped>
 .card{
-
   @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer transition-all;
  
 }
@@ -67,6 +64,9 @@ function favoriteHandler (){
 } 
 </style>
 <style scoped>
+.link{
+  @apply flex flex-col items-center
+}
 .ProductImage{
   @apply h-[auto_180px] w-[47px] lg:w-[194px] bg-cover md:h-[auto_220px] md:w-[240px];
 }

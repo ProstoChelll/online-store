@@ -22,9 +22,9 @@
         <p class="TxtConditions">Условия сервиса</p>
         <div class="LangPosition">
           <span class="icon-RU text-[#838383] text-[20px] mb-[7px]"></span>
-          <p class="TextLags">Каз</p>
-          <p class="TextLags">Рус</p>
-          <p class="TextLags">Eng</p>
+          <p class="TextLags cursor-pointer">Каз</p>
+          <p class="TextLags cursor-pointer">Рус</p>
+          <p class="TextLags cursor-pointer">Eng</p>
         </div>
       </div>
       <div class="flex gap-[8px] mt-[10px] mr-[10px]">

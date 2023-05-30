@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useHeadphones } from "../../store/headphonesData";
-import { useWirelessHeadphones } from "../../store/wirelesseHeadphonesData";
+import { useHeadphones } from "../../store/HeadphonesData";
+import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
 
 const headphones = useHeadphones();
 
