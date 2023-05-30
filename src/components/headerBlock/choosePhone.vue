@@ -4,6 +4,9 @@ import { type IArr } from "@/types";
 
 let tog = ref(false);
 
+function toggleTog() {
+  tog.value = !tog.value;
+}
 const dataArr: IArr[] = [
   { name: "", tog: ref(false) },
   { name: "Apple", tog: ref(false) },
@@ -23,34 +26,34 @@ const dataArr: IArr[] = [
     <div class="ChooseModelPhone">
       <router-link to="/"><div class="Logo">QPICK</div></router-link>
       <div class="flex mt-[9px]">
-        <div
-          class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"
-        ></div>
-        <div @click="tog = !tog" class="flex items-center gap-[8px]">
-          <p class="cursor-pointer text-[5px] lg:text-[15px]">
-            Выбрать модель телефона
-          </p>
+        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
+        <div @click="toggleTog" class="flex items-center gap-[8px]">
+          <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
 
           <span
-            @click=""
             :class="{
-              '-rotate-90': tog,
+              '-rotate-[90deg]': tog,
             }"
             class="text-[24px] cursor-pointer rotate-90 transition-all"
             >&lsaquo;</span
           >
         </div>
         <transition name="expand">
-          <div v-if="tog" class="PhoneCard">
+          <div
+            v-if="tog"
+            v-click-outside="
+              () => {
+                toggleTog;
+                console.log(123);
+              }
+            "
+            class="PhoneCard"
+          >
             <div v-for="i in 9" :key="i">
               <div class="PhoneCardPosition">
                 <p
                   @click="dataArr[i].tog.value = !dataArr[i].tog.value"
-                  :class="
-                    dataArr[i].tog.value
-                      ? `PhoneCardTextActive`
-                      : `PhoneCardText`
-                  "
+                  :class="dataArr[i].tog.value ? `PhoneCardTextActive` : `PhoneCardText`"
                 >
                   {{ dataArr[i].name }}
                 </p>
@@ -60,43 +63,17 @@ const dataArr: IArr[] = [
                   :class="dataArr[i].tog.value ? `SelectRotate` : `Select`"
                 ></select>
               </div>
-              <div v-if="dataArr[i].tog.value" class="MenuProducts">
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 12
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 12 Max
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 12 Pro Max
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 13
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 13 Max
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 13 Pro Max
-                </p>
-                <p
-                  class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                >
-                  iPhone 14
-                </p>
-              </div>
+              <transition name="expandInMenu">
+                <div v-if="dataArr[i].tog.value" class="MenuProducts">
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Pro Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+                </div>
+              </transition>
             </div>
           </div>
         </transition>
@@ -105,6 +82,7 @@ const dataArr: IArr[] = [
   </slot>
 </template>
 <style scoped>
+@import url("../../css/transition.css");
 .ChooseModelPhone {
   @apply flex gap-[25px] mt-[5px] lg:gap-[75px];
 }
@@ -112,7 +90,7 @@ const dataArr: IArr[] = [
   @apply font-bold text-[11px] text-[#101010] mt-[9px] lg:text-[25px];
 }
 .PhoneCard {
-  @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)] lg:w-[255px] lg:h-[300px] lg:top-[60px];
+  @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)] lg:w-[255px] lg:h-[300px] lg:top-[60px] z-10;
 }
 .PhoneCardPosition {
   @apply flex justify-start h-[20px] lg:mt-[10px] lg:h-[40px];
@@ -130,22 +108,6 @@ const dataArr: IArr[] = [
   @apply bg-[#EAEAEA] cursor-pointer h-[20px];
 }
 .MenuProducts {
-  @apply w-[60px] h-[125px] bg-[#EAEAEA] block mt-[4px] ml-[10px];
-}
-
-/* animation */
-.expand-enter-from {
-  top: -300px;
-  opacity: 0;
-}
-.expand-enter-to {
-  top: 60px;
-  opacity: 1;
-  transition: 0.5s;
-}
-.expand-leave-to {
-  top: -300px;
-  opacity: 0;
-  transition: 0.5s;
+  @apply w-[60px] h-[125px] bg-[#EAEAEA] block relative mt-[4px] ml-[10px];
 }
 </style>

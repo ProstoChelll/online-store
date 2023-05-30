@@ -2,14 +2,14 @@
 import { PageTemplate, MobileFooter } from "../layouts";
 import { CardProduct, CardList, productDescription, productReviews } from "../components";
 import { useRoute } from "vue-router";
-import { useHeadphones } from "../store/headphonesData";
-// import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
+import { useHeadphones } from "../store/HeadphonesData";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 const route = useRoute();
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
 
-// const wirelessHeadphones = useWirelessHeadphones();
-// const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
+const wirelessHeadphones = useWirelessHeadphones();
+const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
 </script>
 <template>
   <PageTemplate>
@@ -27,12 +27,13 @@ const headphonesList = headphones.headphonesData;
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
+            @click="item.isFavorive = !item.isFavorive"
           >
           </CardProduct>
         </template>
       </CardList>
-      <!-- <CardList title="Беспроводные наушники">
-        <template v-for="item in headphonesList">
+      <CardList title="Беспроводные наушники">
+        <template v-for="item in wirelessHeadphonesList">
           <CardProduct
             v-if="item.id == route.params.id.slice(1)"
             :item="item"
@@ -43,10 +44,11 @@ const headphonesList = headphones.headphonesData;
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
+            @click="item.isFavorive = !item.isFavorive"
           >
           </CardProduct>
         </template>
-      </CardList> -->
+      </CardList>
       <productDescription />
       <productReviews />
       <MobileFooter />

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
 import { AdBlock, CardList, CardProduct, CardCategory } from "../components";
-import { useHeadphones } from "../store/headphonesData";
+import { useHeadphones } from "../store/HeadphonesData";
 import { useCovers } from "../store/coversData";
-import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
-import { ref } from "vue";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
@@ -40,19 +39,17 @@ function favoriteHandler(id: string, data: any) {
       </CardList>
       <CardList title="Наушники">
         <template v-for="item in headphonesList">
-          <router-link :to="`/catalog/:${item.id}`">
-            <CardProduct
-              :item="item"
-              :img="item.img"
-              :name="item.name"
-              :rating="item.rating"
-              :cost="item.cost"
-              :oldCost="item.oldCost"
-              :id="item.id"
-              :isFavorive="item.isFavorive"
-              @click="favoriteHandler(item.id, headphonesList), tooggleSave()"
-            />
-          </router-link>
+          <CardProduct
+            :item="item"
+            :img="item.img"
+            :name="item.name"
+            :rating="item.rating"
+            :cost="item.cost"
+            :oldCost="item.oldCost"
+            :id="item.id"
+            :isFavorive="item.isFavorive"
+            @click="favoriteHandler(item.id, headphonesList)"
+          />
         </template>
       </CardList>
 

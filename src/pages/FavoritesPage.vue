@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { PageTemplate } from "../layouts";
-import { useHeadphones } from "../store/headphonesData";
-import { useWirelessHeadphones } from "../store/wirelesseHeadphonesData";
+import { useHeadphones } from "../store/HeadphonesData";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 import { CardList, CardProduct } from "../components";
 
 const headphones = useHeadphones();
@@ -54,7 +54,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :isFavorive="item.isFavorive"
-            @clicked="favoriteHandler(item.id, wirelessHeadphonesList)"
+            @click="favoriteHandler(item.id, wirelessHeadphonesList)"
           />
         </template>
       </CardList>

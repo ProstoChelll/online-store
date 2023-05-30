@@ -10,10 +10,7 @@ const props = defineProps<Iprops>();
 <template>
   <teleport to="body">
     <transition name="expand">
-      <div
-        v-if="props.show"
-        class="absolute top-[60px] right-[100px] w-fit py-2 px-3 bg-black rounded-[10px]"
-      >
+      <div v-if="props.show" class="fixed top-[60px] right-[100px] w-fit py-2 px-3 bg-black rounded-[10px]">
         <slot>
           <p class="font-bold text-[12px] lg:text-[18px] text-white">
             {{ props.content }}
@@ -25,9 +22,6 @@ const props = defineProps<Iprops>();
 </template>
 
 <style scoped>
-.Position {
-  @apply flex items-center justify-center w-[50px] rounded-[30px] h-[20px] fixed top-0 z-[2] bg-black lg:w-[100px] lg:h-[50px];
-}
 .expand-enter-from {
   top: -300px;
   right: 100px;
