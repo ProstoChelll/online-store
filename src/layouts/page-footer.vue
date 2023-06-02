@@ -28,7 +28,9 @@
         </div>
       </div>
       <div class="flex gap-[8px] mt-[10px] mr-[10px]">
-        <a target="_blank" href="https://vk.com/"><span class="icon-vk footerIconsStyle lg:text-[30px]"></span></a>
+        <a target="_blank" href="https://vk.com/"
+          ><span class="icon-vk footerIconsStyle lg:text-[30px]"></span
+        ></a>
         <a target="_blank" href="https://www.instagram.com/"
           ><span class="icon-Instagram footerIconsStyle lg:text-[30px]"></span
         ></a>
@@ -42,7 +44,7 @@
 
 <style scoped>
 .Footer {
-  @apply w-[280px] h-[60px] bg-white flex justify-between mt-[30px] rounded-t-[30px] lg:w-[768px] lg:h-[149px] md:w-[1110px];
+  @apply w-[280px] h-[60px] bg-white flex justify-between mt-auto rounded-t-[30px] lg:w-[768px] lg:h-[149px] md:w-[1110px];
 }
 .Logo {
   @apply font-bold text-[13px] text-[#101010] lg:text-[25px];

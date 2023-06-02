@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { PageTemplate, MobileFooter } from "../layouts";
-import { CardProduct, CardList, productDescription, productReviews } from "../components";
+import {
+  CardProduct,
+  CardList,
+  productDescription,
+  productReviews,
+} from "../components";
 import { useRoute } from "vue-router";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
@@ -53,7 +58,7 @@ const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
       <productReviews />
       <MobileFooter />
     </template>
-    <template #footer><span></span></template>
+    <template #footer> </template>
   </PageTemplate>
 
   <slot></slot>
