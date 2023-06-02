@@ -8,3 +8,5 @@ export { default as emptyBag } from "./emptyBagBlock/emptyBag.vue";
 export { default as saveNotice } from "./saveNotice/saveNotice.vue";
 export { default as productDescription } from "./productPage/productDescription.vue";
 export { default as productReviews } from "./productPage/productReviews.vue";
+export { default as fullBag } from "./fullBag/fullBag.vue";
+export { default as bagCardProduct } from "./bagCardProduct/bagCardProduct.vue";

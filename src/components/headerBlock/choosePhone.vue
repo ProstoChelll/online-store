@@ -4,9 +4,6 @@ import { type IArr } from "@/types";
 
 let tog = ref(false);
 
-function toggleTog() {
-  tog.value = !tog.value;
-}
 const dataArr: IArr[] = [
   { name: "", tog: ref(false) },
   { name: "Apple", tog: ref(false) },
@@ -22,7 +19,6 @@ const dataArr: IArr[] = [
 const ChooseModelPhone = ref(null);
 
 function clickOutside(e: MouseEvent): any {
-  console.log("click");
   tog.value = false;
 }
 onMounted(() => {
@@ -38,13 +34,9 @@ onMounted(() => {
     <div ref="ChooseModelPhone" class="ChooseModelPhone">
       <router-link to="/"><div class="Logo">QPICK</div></router-link>
       <div class="flex mt-[9px]">
-        <div
-          class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"
-        ></div>
+        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
         <div @click.stop="tog = true" class="flex items-center gap-[8px]">
-          <p class="cursor-pointer text-[5px] lg:text-[15px]">
-            Выбрать модель телефона
-          </p>
+          <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
 
           <span
             :class="{
@@ -60,11 +52,7 @@ onMounted(() => {
               <div class="PhoneCardPosition">
                 <p
                   @click="dataArr[i].tog.value = !dataArr[i].tog.value"
-                  :class="
-                    dataArr[i].tog.value
-                      ? `PhoneCardTextActive`
-                      : `PhoneCardText`
-                  "
+                  :class="dataArr[i].tog.value ? `PhoneCardTextActive` : `PhoneCardText`"
                 >
                   {{ dataArr[i].name }}
                 </p>
@@ -76,41 +64,13 @@ onMounted(() => {
               </div>
               <transition name="expandInMenu">
                 <div v-if="dataArr[i].tog.value" class="MenuProducts">
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 12
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 12 Max
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 12 Pro Max
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 13
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 13 Max
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 13 Pro Max
-                  </p>
-                  <p
-                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
-                  >
-                    iPhone 14
-                  </p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Pro Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
+                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
                 </div>
               </transition>
             </div>

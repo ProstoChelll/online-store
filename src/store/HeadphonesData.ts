@@ -11,6 +11,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 3527,
         id: "AppleBYZS852I_1",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/AppleEarPods.png",
@@ -20,6 +21,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 0,
         id: "AppleEarPods_2",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/AppleEarPodsInBox.png",
@@ -29,6 +31,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 0,
         id: "AppleEarPods_3",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/AppleByzS8521.png",
@@ -38,6 +41,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 3527,
         id: "AppleBYZS852I_4",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/AppleEarPods.png",
@@ -47,6 +51,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 0,
         id: "AppleEarPods_5",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/AppleEarPodsInBox.png",
@@ -56,6 +61,7 @@ export const useHeadphones = defineStore("Headphones", {
         oldCost: 0,
         id: "AppleEarPods_6",
         isFavorive: false,
+        isOnBag: false,
       },
     ],
   }),
@@ -68,6 +74,15 @@ export const useHeadphones = defineStore("Headphones", {
         }
       }
       return activeCard;
+    },
+    getActiveBag() {
+      const activeBag: any[] = [];
+      for (let i = 0; i < this.headphonesData.length; i++) {
+        if (this.headphonesData[i].isOnBag == true) {
+          activeBag.push(this.headphonesData[i]);
+        }
+      }
+      return activeBag;
     },
   },
   actions: {

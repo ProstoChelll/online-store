@@ -5,7 +5,7 @@
     <img src="src/images/bag.svg" class="mt-[85px]" />
     <h3 class="BagEmpty">Корзина пуста</h3>
     <p class="BagText">Но это никогда не поздно исправить :)</p>
-    <router-link to="/catalog"><button class="BagBtn">В каталог товаров</button></router-link>
+    <router-link to="/"><button class="BagBtn">В каталог товаров</button></router-link>
   </div>
 </template>
 

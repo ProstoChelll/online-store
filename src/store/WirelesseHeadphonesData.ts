@@ -11,6 +11,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         oldCost: 0,
         id: "AppleAirPods_1",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/GerlaxGh04.png",
@@ -20,6 +21,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         oldCost: 0,
         id: "GERLAXGH042_2",
         isFavorive: false,
+        isOnBag: false,
       },
       {
         img: "src/images/BOROFONEBO4.png",
@@ -29,6 +31,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         oldCost: 0,
         id: "BOROFONEBO4_3",
         isFavorive: false,
+        isOnBag: false,
       },
     ],
   }),
@@ -41,6 +44,15 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         }
       }
       return activeCard;
+    },
+    getActiveBag() {
+      const activeBag: any[] = [];
+      for (let i = 0; i < this.wirelessHeadphonesList.length; i++) {
+        if (this.wirelessHeadphonesList[i].isOnBag == true) {
+          activeBag.push(this.wirelessHeadphonesList[i]);
+        }
+      }
+      return activeBag;
     },
   },
   actions: {

@@ -14,7 +14,7 @@ const WirelessHeadphones = useWirelessHeadphones();
         <span class="Circle">{{ headphones.getActiveCard.length + WirelessHeadphones.getActiveCard.length }}</span>
       </router-link>
       <router-link to="/bag" class="icon-basket text-[#838383] text-[7px] hover:text-black lg:text-[22px]">
-        <span class="Circle">//</span>
+        <span class="Circle">{{ headphones.getActiveBag.length + WirelessHeadphones.getActiveBag.length }}</span>
       </router-link>
     </div>
   </slot>
