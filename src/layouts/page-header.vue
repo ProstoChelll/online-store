@@ -2,7 +2,7 @@
 import { ChoosePhone, FavoritesAndBag } from "../components";
 </script>
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center fixed">
     <ChoosePhone />
     <FavoritesAndBag />
   </div>

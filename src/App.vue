@@ -3,7 +3,7 @@ import { Header } from "./layouts";
 </script>
 
 <template>
-  <div>
+  <div class="h-full relative">
     <Header />
     <router-view />
   </div>

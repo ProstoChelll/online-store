@@ -1,6 +1,7 @@
 <script setup lang="ts"> 
 import {ref} from 'vue'
 import  saveNotice  from '../saveNotice/saveNotice.vue'
+import { CardOverlay } from '../../layouts'
 interface Props {
     item:any
     img: string,
@@ -27,7 +28,7 @@ function noticeHandler (){
 }
 </script>
 <template> 
-  <div :class="$style.card" :id="props.id"> 
+  <CardOverlay :class="$style.card" :id="props.id"> 
    <span @click="noticeHandler()"  
  
    :class="[
@@ -51,12 +52,12 @@ function noticeHandler (){
       </div>
     </div>
   </router-link>
-  </div>
+  </CardOverlay>
   <saveNotice :show="saveToogle" content="Сохранено"/>
 </template>
 <style module scoped>
 .card{
-  @apply w-[70px] h-[100px] bg-white rounded-[15px] flex flex-col items-center justify-end md:w-[350px] md:h-[400px] lg:w-[235px] lg:h-[300px] relative hover:scale-[1.1] hover:shadow-[0px_0px_20px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer transition-all;
+  @apply w-[70px] h-[100px]   md:h-[400px] lg:w-[235px] md:w-[350px] lg:h-[300px]
  
 }
 .heart_icon{
