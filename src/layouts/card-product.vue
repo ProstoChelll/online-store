@@ -1,7 +1,7 @@
 <script setup lang="ts"> 
 import {ref} from 'vue'
-import  saveNotice  from '../saveNotice/saveNotice.vue'
-import { CardOverlay } from '../../layouts'
+import  saveNotice  from '../components/saveNotice/SaveNotice.vue'
+import { CardOverlay } from './index.ts'
 interface Props {
     item:any
     img: string,
@@ -57,7 +57,7 @@ function noticeHandler (){
 </template>
 <style module scoped>
 .card{
-  @apply w-[70px] h-[100px]   md:h-[400px] lg:w-[235px] md:w-[350px] lg:h-[300px]
+  @apply w-[70px] h-[100px] md:h-[400px] lg:w-[235px] md:w-[350px] lg:h-[300px]
  
 }
 .heart_icon{
@@ -66,7 +66,7 @@ function noticeHandler (){
 </style>
 <style scoped>
 .link{
-  @apply flex flex-col items-center
+  @apply flex flex-col items-center mb-[5px] lg:mb-[20px]
 }
 .ProductImage{
   @apply h-[auto_180px] w-[47px] lg:w-[194px] bg-cover md:h-[auto_220px] md:w-[240px];

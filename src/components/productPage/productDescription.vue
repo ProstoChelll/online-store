@@ -22,12 +22,12 @@ let tog = ref(false);
 
 <style module scoped>
 .description {
-  @apply flex justify-around mt-[30px] w-[377px] bg-white rounded-[15px] cursor-pointer;
+  @apply flex justify-around pl-[10px] pr-[5px] mt-[30px] w-[280px] bg-white rounded-[15px] cursor-pointer lg:w-[377px] md:w-[724px] md:justify-center;
 }
 .descriptionTxt {
-  @apply pt-[23px] pb-[23px] text-[17px] leading-[21px] font-semibold;
+  @apply pt-[13px] pb-[13px] text-[17px] leading-[21px] font-semibold lg:pt-[23px] lg:pb-[23px];
 }
 .descriptionArray {
-  @apply -rotate-90 pr-[30px] pb-[23px] text-[30px] text-[#101010] h-[35px];
+  @apply -rotate-90 pr-[30px] pb-[13px] text-[30px] text-[#101010] h-[22px] lg:h-[35px] lg:pb-[23px] md:pt-[40px] md:pl-[20px];
 }
 </style>

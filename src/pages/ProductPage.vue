@@ -1,64 +1,61 @@
 <script setup lang="ts">
-import { PageTemplate, MobileFooter } from "../layouts";
-import {
-  CardProduct,
-  CardList,
-  productDescription,
-  productReviews,
-} from "../components";
+import { PageTemplate, MobileBuyBtnFooter, BuyBtnFooter } from "../layouts";
+import { productDescription, productReviews } from "../components";
 import { useRoute } from "vue-router";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { CardProducStatic } from "../layouts";
+
 const route = useRoute();
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
 
 const wirelessHeadphones = useWirelessHeadphones();
 const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;
+
+let clientWidth = document.documentElement.clientWidth;
 </script>
 <template>
   <PageTemplate>
     <template #header><span></span></template>
     <template #body>
-      <CardList title="Наушники">
-        <template v-for="item in headphonesList">
-          <CardProduct
-            v-if="item.id == route.params.id.slice(1)"
-            :item="item"
-            :img="item.img"
-            :name="item.name"
-            :rating="0"
-            :cost="item.cost"
-            :oldCost="item.oldCost"
-            :id="item.id"
-            :isFavorive="item.isFavorive"
-            @click="item.isFavorive = !item.isFavorive"
-          >
-          </CardProduct>
-        </template>
-      </CardList>
-      <CardList title="Беспроводные наушники">
-        <template v-for="item in wirelessHeadphonesList">
-          <CardProduct
-            v-if="item.id == route.params.id.slice(1)"
-            :item="item"
-            :img="item.img"
-            :name="item.name"
-            :rating="0"
-            :cost="item.cost"
-            :oldCost="item.oldCost"
-            :id="item.id"
-            :isFavorive="item.isFavorive"
-            @click="item.isFavorive = !item.isFavorive"
-          >
-          </CardProduct>
-        </template>
-      </CardList>
-      <productDescription />
-      <productReviews />
-      <MobileFooter />
+      <template v-for="item in headphonesList">
+        <CardProducStatic
+          v-if="item.id == route.params.id.slice(1)"
+          :item="item"
+          :img="item.img"
+          :name="item.name"
+          :rating="0"
+          :cost="item.cost"
+          :oldCost="item.oldCost"
+          :id="item.id"
+          :isFavorive="item.isFavorive"
+          @click="item.isFavorive = !item.isFavorive"
+        >
+        </CardProducStatic>
+      </template>
+      <template v-for="item in wirelessHeadphonesList">
+        <CardProducStatic
+          v-if="item.id == route.params.id.slice(1)"
+          :item="item"
+          :img="item.img"
+          :name="item.name"
+          :rating="0"
+          :cost="item.cost"
+          :oldCost="item.oldCost"
+          :id="item.id"
+          :isFavorive="item.isFavorive"
+          @click="item.isFavorive = !item.isFavorive"
+        >
+        </CardProducStatic>
+      </template>
+      <div :class="clientWidth > 768 ? 'flex justify-between w-[768px] md:w-[1110px]' : 'block'">
+        <productDescription />
+        <productReviews v-if="clientWidth < 768" />
+        <BuyBtnFooter v-if="clientWidth > 768" />
+      </div>
     </template>
-    <template #footer> </template>
+    <template #footer><MobileBuyBtnFooter v-if="clientWidth < 768" /></template>
   </PageTemplate>
 
   <slot></slot>

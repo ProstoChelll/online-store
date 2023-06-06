@@ -1,5 +1,10 @@
 export { default as Header } from "./page-header.vue";
 export { default as PageTemplate } from "./page-template.vue";
 export { default as Footer } from "./page-footer.vue";
-export { default as MobileFooter } from "./page-modileFooter.vue";
-export { default as CardOverlay } from './card-overlay.vue'
+export { default as MobileBuyBtnFooter } from "./page-mobileBuyBtn.vue";
+export { default as CardOverlay } from "./card-overlay.vue";
+export { default as CardProduct } from "./card-product.vue";
+export { default as CardProducStatic } from "./card-product-static.vue";
+export { default as BuyBtnFooter } from "./buy-btn.vue";
+export { default as BagTotal } from "./bag-total.vue";
+export { default as CardList } from "./card-list.vue";

@@ -19,7 +19,10 @@ const dataArr: IArr[] = [
 const ChooseModelPhone = ref(null);
 
 function clickOutside(e: MouseEvent): any {
-  tog.value = false;
+  if (e.target.id == "PhoneCard") {
+  } else {
+    tog.value = false;
+  }
 }
 onMounted(() => {
   document.addEventListener("click", (e) => clickOutside(e));
@@ -34,7 +37,7 @@ onMounted(() => {
     <div ref="ChooseModelPhone" class="ChooseModelPhone">
       <router-link to="/"><div class="Logo">QPICK</div></router-link>
       <div class="flex mt-[9px]">
-        <div class="mt-[5px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
+        <div class="mt-[-3px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
         <div @click.stop="tog = true" class="flex items-center gap-[8px]">
           <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
 
@@ -47,16 +50,18 @@ onMounted(() => {
           >
         </div>
         <transition name="expand">
-          <div v-if="tog" class="PhoneCard">
+          <div v-if="tog" id="PhoneCard" class="PhoneCard">
             <div v-for="i in 9" :key="i">
-              <div class="PhoneCardPosition">
+              <div id="PhoneCard" class="PhoneCardPosition">
                 <p
+                  id="PhoneCard"
                   @click="dataArr[i].tog.value = !dataArr[i].tog.value"
                   :class="dataArr[i].tog.value ? `PhoneCardTextActive` : `PhoneCardText`"
                 >
                   {{ dataArr[i].name }}
                 </p>
                 <select
+                  id="PhoneCard"
                   class="ml-[10px]"
                   @click="dataArr[i].tog.value = !dataArr[i].tog.value"
                   :class="dataArr[i].tog.value ? `SelectRotate` : `Select`"
@@ -64,13 +69,21 @@ onMounted(() => {
               </div>
               <transition name="expandInMenu">
                 <div v-if="dataArr[i].tog.value" class="MenuProducts">
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Max</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12 Pro Max</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Max</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13 Pro Max</p>
-                  <p class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                    iPhone 12 Max
+                  </p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                    iPhone 12 Pro Max
+                  </p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                    iPhone 13 Max
+                  </p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                    iPhone 13 Pro Max
+                  </p>
+                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
                 </div>
               </transition>
             </div>
@@ -86,7 +99,7 @@ onMounted(() => {
   @apply flex gap-[25px] mt-[5px] lg:gap-[75px];
 }
 .Logo {
-  @apply font-bold text-[11px] text-[#101010] mt-[9px] lg:text-[25px];
+  @apply font-bold text-[11px] text-[#101010] lg:text-[25px];
 }
 .PhoneCard {
   @apply w-[90px] h-[105px] bg-[#EAEAEA] absolute top-[40px] block overflow-y-scroll rounded-b-[15px] shadow-[0px_0px_20px_0px_rgba(0,0,0,0.1)] lg:w-[255px] lg:h-[300px] lg:top-[60px] z-10;

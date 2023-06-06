@@ -12,6 +12,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         id: "AppleAirPods_1",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/GerlaxGh04.png",
@@ -22,6 +23,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         id: "GERLAXGH042_2",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/BOROFONEBO4.png",
@@ -32,6 +34,7 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
         id: "BOROFONEBO4_3",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
     ],
   }),
@@ -54,16 +57,31 @@ export const useWirelessHeadphones = defineStore("wirelessHeadphones", {
       }
       return activeBag;
     },
+    getAllCost() {
+      let cost: number = 0;
+      for (let i = 0; i < this.wirelessHeadphonesList.length; i++) {
+        if (this.wirelessHeadphonesList[i].isOnBag == true) {
+          cost = (cost + this.wirelessHeadphonesList[i].cost) * this.wirelessHeadphonesList[i].quantity;
+        }
+      }
+      return cost;
+    },
   },
   actions: {
     tooggleIcons(id: number): void {
       this.wirelessHeadphonesList[id].isFavorive = !this.wirelessHeadphonesList[id].isFavorive;
     },
     toogleFavoritesIcons(id: string): void {
-      console.log(id);
       for (let i = 0; i <= this.wirelessHeadphonesList.length; i++) {
         if (id == this.wirelessHeadphonesList[i].id) {
           this.wirelessHeadphonesList[i].isFavorive = !this.wirelessHeadphonesList[i].isFavorive;
+        }
+      }
+    },
+    toogleBag(id: string): void {
+      for (let i = 0; i <= this.wirelessHeadphonesList.length; i++) {
+        if (id == this.wirelessHeadphonesList[i].id) {
+          this.wirelessHeadphonesList[i].isOnBag = !this.wirelessHeadphonesList[i].isOnBag;
         }
       }
     },

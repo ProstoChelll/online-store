@@ -10,7 +10,7 @@ const props = defineProps<Iprops>();
 <template>
   <teleport to="body">
     <transition name="expand">
-      <div v-if="props.show" class="fixed top-[60px] right-[100px] w-fit py-2 px-3 bg-black rounded-[10px]">
+      <div v-if="props.show" class="fixed top-[60px] right-[100px] w-fit py-2 px-3 bg-black rounded-[10px] z-20">
         <slot>
           <p class="font-bold text-[12px] lg:text-[18px] text-white">
             {{ props.content }}
