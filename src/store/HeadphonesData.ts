@@ -12,6 +12,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleBYZS852I_1",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/AppleEarPods.png",
@@ -22,6 +23,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleEarPods_2",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/AppleEarPodsInBox.png",
@@ -32,6 +34,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleEarPods_3",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/AppleByzS8521.png",
@@ -42,6 +45,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleBYZS852I_4",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/AppleEarPods.png",
@@ -52,6 +56,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleEarPods_5",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
       {
         img: "src/images/AppleEarPodsInBox.png",
@@ -62,6 +67,7 @@ export const useHeadphones = defineStore("Headphones", {
         id: "AppleEarPods_6",
         isFavorive: false,
         isOnBag: false,
+        quantity: 1,
       },
     ],
   }),
@@ -84,6 +90,15 @@ export const useHeadphones = defineStore("Headphones", {
       }
       return activeBag;
     },
+    getAllCost() {
+      let cost: number = 0;
+      for (let i = 0; i < this.headphonesData.length; i++) {
+        if (this.headphonesData[i].isOnBag == true) {
+          cost = (cost + this.headphonesData[i].cost) * this.headphonesData[i].quantity;
+        }
+      }
+      return cost;
+    },
   },
   actions: {
     tooggleIcons(id: number): void {
@@ -93,6 +108,13 @@ export const useHeadphones = defineStore("Headphones", {
       for (let i = 0; i <= this.headphonesData.length; i++) {
         if (id == this.headphonesData[i].id) {
           this.headphonesData[i].isFavorive = !this.headphonesData[i].isFavorive;
+        }
+      }
+    },
+    toogleBag(id: string): void {
+      for (let i = 0; i <= this.headphonesData.length; i++) {
+        if (id == this.headphonesData[i].id) {
+          this.headphonesData[i].isOnBag = !this.headphonesData[i].isOnBag;
         }
       }
     },

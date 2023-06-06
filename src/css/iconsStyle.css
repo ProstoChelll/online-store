@@ -1,18 +1,18 @@
 @font-face {
-  font-family: "icons";
-  src: url("../css/fonts/icons.eot?rooydo");
-  src: url("../css/fonts/fonts/icons.eot?rooydo#iefix") format("embedded-opentype"),
-    url("../css/fonts/icons.ttf?rooydo") format("truetype"), url("../css/fonts/icons.woff?rooydo") format("woff"),
-    url("../css/fonts/icons.svg?rooydo#icons") format("svg");
+  font-family: 'icons';
+  src:  url('fonts/icons.eot?n5lf3i');
+  src:  url('fonts/icons.eot?n5lf3i#iefix') format('embedded-opentype'),
+    url('fonts/icons.ttf?n5lf3i') format('truetype'),
+    url('fonts/icons.woff?n5lf3i') format('woff'),
+    url('fonts/icons.svg?n5lf3i#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"]::before,
-[class*=" icon-"]::before {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icons" !important;
+  font-family: 'icons' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,10 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-car:before {
+  content: "\e909";
+}
+.icon-delete:before {
+  content: "\e908";
+}
 .icon-RU:before {
   content: "\e901";
-  color: #838383;
-  font-size: 8px;
 }
 .icon-basket:before {
   content: "\e900";

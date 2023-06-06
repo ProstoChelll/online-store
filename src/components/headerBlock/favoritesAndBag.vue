@@ -13,7 +13,7 @@ const WirelessHeadphones = useWirelessHeadphones();
       <router-link to="/favorites" class="icon-heart text-[#838383] text-[7px] hover:text-red-700 lg:text-[22px]">
         <span class="Circle">{{ headphones.getActiveCard.length + WirelessHeadphones.getActiveCard.length }}</span>
       </router-link>
-      <router-link to="/bag" class="icon-basket text-[#838383] text-[7px] hover:text-black lg:text-[22px]">
+      <router-link to="/bag" class="icon-basket text-[#838383] text-[6px] hover:text-black lg:text-[22px]">
         <span class="Circle">{{ headphones.getActiveBag.length + WirelessHeadphones.getActiveBag.length }}</span>
       </router-link>
     </div>
@@ -22,9 +22,9 @@ const WirelessHeadphones = useWirelessHeadphones();
 
 <style scoped>
 .RightIcons {
-  @apply flex gap-[15px] mt-[15px] ml-[30px] md:ml-[614px];
+  @apply flex gap-[15px] mt-[18px] ml-[30px] md:ml-[614px];
 }
 .Circle {
-  @apply ml-[-3px] absolute rounded-full bg-[#FFA542] w-[5px] h-[5px] pl-[1.6px] text-white top-[15px] font-medium text-[3.7px] lg:w-[17px] lg:h-[17px] lg:text-[12px] lg:pl-[5px];
+  @apply ml-[-7px] absolute rounded-full bg-[#FFA542] w-[5px] h-[5px] pl-[1.6px] text-white top-[15px] font-medium text-[3.3px] lg:w-[17px] lg:h-[17px] lg:text-[14px] lg:pl-[5px];
 }
 </style>

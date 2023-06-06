@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { PageTemplate } from "../layouts";
+import { PageTemplate, CardProduct } from "../layouts";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
-import { CardList, CardProduct } from "../components";
+import { CardList } from "../layouts";
 
 const headphones = useHeadphones();
 let headphonesList = computed(() => headphones.getActiveCard);
@@ -28,7 +28,7 @@ function favoriteHandler(id: string, data: any) {
     <template #header><span></span></template>
     <template #body>
       <h2 class="MainTxt">Избранное</h2>
-      <CardList v-if="headphonesList.length > 0" title="Наушники">
+      <CardList v-if="headphonesList.length > 0" title="">
         <template v-for="item in headphonesList">
           <CardProduct
             :item="item"
@@ -43,7 +43,7 @@ function favoriteHandler(id: string, data: any) {
           />
         </template>
       </CardList>
-      <CardList v-if="wirelessHeadphonesList.length > 0" title="Беспроводные наушники ">
+      <CardList v-if="wirelessHeadphonesList.length > 0" title="">
         <template v-for="item in wirelessHeadphonesList">
           <CardProduct
             :item="item"
@@ -65,6 +65,6 @@ function favoriteHandler(id: string, data: any) {
 
 <style scoped>
 .MainTxt {
-  @apply mt-[9px] font-semibold text-[10px] leading-[24px] lg:text-[20px] lg:mt-[29px] lg:mb-[21px];
+  @apply mt-[19px] font-semibold text-[10px] leading-[24px] lg:text-[20px] lg:mt-[55px] lg:mb-[21px];
 }
 </style>
