@@ -1,7 +1,7 @@
 <script setup lang="ts"> 
 import {ref} from 'vue'
-import  saveNotice  from '../components/saveNotice/SaveNotice.vue'
-import { CardOverlay } from './index.ts'
+import  {saveNotice}  from '../index'
+import { CardOverlay } from '../../layouts/index'
 interface Props {
     item:any
     img: string,

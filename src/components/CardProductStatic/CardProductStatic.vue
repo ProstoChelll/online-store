@@ -1,6 +1,6 @@
 <script setup lang="ts"> 
 import {ref} from 'vue'
-import  saveNotice  from '../components/saveNotice/SaveNotice.vue'
+import  {saveNotice}  from "../index"
 interface Props {
     item:any
     img: string,

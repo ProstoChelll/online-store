@@ -2,13 +2,14 @@
 import { computed } from "vue";
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
-import { bagCardProduct, bagDelivery } from "../index";
-import { BagTotal } from "../../layouts";
+import { bagCardProduct, bagDelivery, BagTotal } from "../index";
+import {} from "../../layouts";
 const headphones = useHeadphones();
 const WirelessHeadphones = useWirelessHeadphones();
 
 let activeBagWireless = computed(() => WirelessHeadphones.getActiveBag);
 let activeBagHeadphones = computed(() => headphones.getActiveBag);
+console.log(activeBagHeadphones.value);
 
 function bagHandler(id: string, data: any) {
   for (let i = 0; i < data.length; i++) {
