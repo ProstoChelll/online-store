@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { saveNotice } from "../components";
-import { useHeadphones } from "../store/HeadphonesData";
-import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { saveNotice } from "../../components";
+import { useHeadphones } from "../../store/HeadphonesData";
+import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
 
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
@@ -48,17 +48,15 @@ function AddToBag() {
 
 <template>
   <slot>
-    <div class="flex gap-[17px] mt-[20px]">
-      <div class="littleCard" @click="(tog = !tog), noticeHandler(), toogleBag()">
-        <p class="icon-basket" :class="$style.bagStyle"></p>
-      </div>
+    <div class="flex flex-col gap-[17px] mt-[20px]">
       <router-link to="/bag">
         <div class="bigCard" @click="AddToBag()">
-          <p class="text-white">Купить сейчас!</p>
+          <p class="text-white">Купить!</p>
         </div>
       </router-link>
-      <div class="littleCard">
-        <p class="icon-Instagram text-white text-[22px]"></p>
+      <div class="littleCard" @click="(tog = !tog), noticeHandler(), toogleBag()">
+        <span class="icon-basket text-[20px] text-white pr-[10px]"></span>
+        <p :class="$style.bagStyle">Добавить в корзину</p>
       </div>
     </div>
   </slot>
@@ -67,10 +65,10 @@ function AddToBag() {
 
 <style scoped>
 .littleCard {
-  @apply flex items-center justify-center w-[45px] h-[45px] bg-[#101010] rounded-[15px] cursor-pointer;
+  @apply flex items-center justify-center w-[265px] h-[45px] bg-[#101010] rounded-[15px] cursor-pointer;
 }
 .bigCard {
-  @apply flex items-center justify-center w-[165px] h-[45px] bg-[#101010] rounded-[15px] cursor-pointer;
+  @apply flex items-center justify-center w-[265px] h-[45px] bg-[#101010] rounded-[15px] cursor-pointer;
 }
 </style>
 <style module scoped>

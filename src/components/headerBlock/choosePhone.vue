@@ -36,7 +36,7 @@ onMounted(() => {
   <slot name="left">
     <div ref="ChooseModelPhone" class="ChooseModelPhone">
       <router-link to="/"><div class="Logo">QPICK</div></router-link>
-      <div class="flex mt-[9px]">
+      <div class="flex items-center mt-[9px]">
         <div class="mt-[-3px] mr-[5px] icon-phone text-[#838383] text-[7px] lg:text-[14px] lg:mt-[10px]"></div>
         <div @click.stop="tog = true" class="flex items-center gap-[8px]">
           <p class="cursor-pointer text-[5px] lg:text-[15px]">Выбрать модель телефона</p>
@@ -96,7 +96,7 @@ onMounted(() => {
 <style scoped>
 @import url("../../css/transition.css");
 .ChooseModelPhone {
-  @apply flex gap-[25px] mt-[5px] lg:gap-[75px];
+  @apply flex items-center gap-[25px] mt-[5px] lg:gap-[75px];
 }
 .Logo {
   @apply font-bold text-[11px] text-[#101010] lg:text-[25px];

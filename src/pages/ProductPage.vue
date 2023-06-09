@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { PageTemplate, MobileBuyBtnFooter, BuyBtnFooter } from "../layouts";
-import { productDescription, productReviews } from "../components";
+import { PageTemplate } from "../layouts";
+import { productDescription, productReviews, BuyBtnFooter, CardProducStatic, MobileBuyBtnFooter } from "../components";
 import { useRoute } from "vue-router";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
-import { CardProducStatic } from "../layouts";
 
 const route = useRoute();
 const headphones = useHeadphones();
 const headphonesList = headphones.headphonesData;
+console.log(route.params.id.slice(1));
+console.log(headphonesList);
 
 const wirelessHeadphones = useWirelessHeadphones();
 const wirelessHeadphonesList = wirelessHeadphones.wirelessHeadphonesList;

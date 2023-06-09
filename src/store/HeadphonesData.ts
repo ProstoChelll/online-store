@@ -90,6 +90,21 @@ export const useHeadphones = defineStore("Headphones", {
       }
       return activeBag;
     },
+    getActive(choose: any) {
+      const active: any[] = [];
+      for (let i = 0; i < this.headphonesData.length; i++) {
+        if (choose == 1) {
+          if (this.headphonesData[i].isFavorive == true) {
+            active.push(this.headphonesData[i]);
+          }
+        } else if (choose == 2) {
+          if (this.headphonesData[i].isOnBag == true) {
+            active.push(this.headphonesData[i]);
+          }
+        }
+      }
+      return active;
+    },
     getAllCost() {
       let cost: number = 0;
       for (let i = 0; i < this.headphonesData.length; i++) {

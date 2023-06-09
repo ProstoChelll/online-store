@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PageTemplate, BagTotal } from "../layouts";
-import { emptyBag, fullBag } from "../components";
+import { PageTemplate } from "../layouts";
+import { emptyBag, fullBag, BagTotal } from "../components";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 const headphones = useHeadphones();

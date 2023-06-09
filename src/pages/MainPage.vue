@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CardProduct, CardList, PageTemplate } from "../layouts";
-import { AdBlock, CardCategory } from "../components";
+import { CardList, PageTemplate } from "../layouts";
+import { AdBlock, CardCategory, CardProduct } from "../components";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useCovers } from "../store/coversData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
@@ -72,3 +72,6 @@ function favoriteHandler(id: string, data: any) {
     <template #footer> </template>
   </PageTemplate>
 </template>
+<!-- поправить дизайн шапки -->
+<!-- писать функции с аргументами (так что бы 1 функция будет универсальной ил тп) -->
+<!-- утили функции для 1 компонента -->

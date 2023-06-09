@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { PageTemplate, CardProduct } from "../layouts";
+import { PageTemplate, CardList } from "../layouts";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
-import { CardList } from "../layouts";
+import { CardProduct } from "../components/index";
 
 const headphones = useHeadphones();
-let headphonesList = computed(() => headphones.getActiveCard);
+let headphonesList = computed(() => headphones.getActive(1));
 
 const wirelessHeadphones = useWirelessHeadphones();
 let wirelessHeadphonesList = computed(() => wirelessHeadphones.getActiveCard);
@@ -14,7 +14,7 @@ let wirelessHeadphonesList = computed(() => wirelessHeadphones.getActiveCard);
 function favoriteHandler(id: string, data: any) {
   for (let i = 0; i < data.length; i++) {
     if (data[i].id === id) {
-      if (data == headphones.getActiveCard) {
+      if (data == headphones.getActive(1)) {
         headphones.toogleFavoritesIcons(id);
       } else {
         wirelessHeadphones.toogleFavoritesIcons(id);

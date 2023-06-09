@@ -22,7 +22,7 @@ const WirelessHeadphones = useWirelessHeadphones();
 
 <style scoped>
 .RightIcons {
-  @apply flex gap-[15px] mt-[18px] ml-[30px] md:ml-[614px];
+  @apply flex gap-[15px] mt-[18px] ml-[30px];
 }
 .Circle {
   @apply ml-[-7px] absolute rounded-full bg-[#FFA542] w-[5px] h-[5px] pl-[1.6px] text-white top-[15px] font-medium text-[3.3px] lg:w-[17px] lg:h-[17px] lg:text-[14px] lg:pl-[5px];
