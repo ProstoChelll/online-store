@@ -1,75 +1,15 @@
 import { defineStore } from "pinia";
+import useHttp from "../server/server";
+
+async function getHeadphonesList() {
+  const data = await useHttp("/");
+  return data.respons.value.headphonesData;
+}
+const headphonesData = await getHeadphonesList();
 
 export const useHeadphones = defineStore("Headphones", {
   state: () => ({
-    headphonesData: [
-      {
-        img: "src/images/AppleByzS8521.png",
-        name: "Apple BYZ S852I",
-        rating: 4.7,
-        cost: 2927,
-        oldCost: 3527,
-        id: "AppleBYZS852I_1",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-      {
-        img: "src/images/AppleEarPods.png",
-        name: "Apple EarPods",
-        rating: 4.5,
-        cost: 2327,
-        oldCost: 0,
-        id: "AppleEarPods_2",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-      {
-        img: "src/images/AppleEarPodsInBox.png",
-        name: "Apple EarPods",
-        rating: 4.5,
-        cost: 2327,
-        oldCost: 0,
-        id: "AppleEarPods_3",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-      {
-        img: "src/images/AppleByzS8521.png",
-        name: "Apple BYZ S852I",
-        rating: 4.7,
-        cost: 2927,
-        oldCost: 3527,
-        id: "AppleBYZS852I_4",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-      {
-        img: "src/images/AppleEarPods.png",
-        name: "Apple EarPods",
-        rating: 4.5,
-        cost: 2327,
-        oldCost: 0,
-        id: "AppleEarPods_5",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-      {
-        img: "src/images/AppleEarPodsInBox.png",
-        name: "Apple EarPods",
-        rating: 4.5,
-        cost: 2327,
-        oldCost: 0,
-        id: "AppleEarPods_6",
-        isFavorive: false,
-        isOnBag: false,
-        quantity: 1,
-      },
-    ],
+    headphonesData,
   }),
   getters: {
     getActiveCard() {
