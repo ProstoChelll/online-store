@@ -72,6 +72,3 @@ function favoriteHandler(id: string, data: any) {
     <template #footer> </template>
   </PageTemplate>
 </template>
-<!-- поправить дизайн шапки -->
-<!-- писать функции с аргументами (так что бы 1 функция будет универсальной ил тп) -->
-<!-- утили функции для 1 компонента -->
