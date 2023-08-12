@@ -15,25 +15,25 @@ let headphonesList = ref();
 let coversList = ref();
 let wirelessHeadphonesList = ref();
 
-useHttp("/headphonesData").then((data) => {
-  headphonesList.value = data.respons.value.headphonesData;
+useHttp("/unWirelessHeadphonesData").then((data) => {
+  headphonesList.value = data.respons.value.unWirelessHeadphonesData;
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
-useHttp("/coversList").then((data) => {
-  coversList.value = data.respons.value.coversList;
-  loading.value = data.loading.value;
-  error.value = data.error.value;
-});
-
-useHttp("/wirelessHeadphonesList").then((data) => {
-  wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesList;
+useHttp("/coversData").then((data) => {
+  coversList.value = data.respons.value.coversData;
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
 
-function favoriteHandler(id: string, data: any) {
-  if (data == headphonesList) {
+useHttp("/wirelessHeadphonesData").then((data) => {
+  wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
+  loading.value = data.loading.value;
+  error.value = data.error.value;
+});
+
+function favoriteHandler(id: string, data: string) {
+  if (data == "unWirelessHeadphonesData") {
     headphones.addFavorites(id);
   } else {
     wirelessHeadphones.addFavorites(id);
@@ -42,7 +42,10 @@ function favoriteHandler(id: string, data: any) {
 </script>
 
 <template>
-  <PageTemplate>
+  <template v-if="loading">
+    <div class="w-[100%] h-[100%] flex justify-center items-center"><p>загрузка...</p></div>
+  </template>
+  <PageTemplate v-if="!loading">
     <template #header><span></span></template>
     <template #ad><AdBlock /></template>
     <template #body>
@@ -62,7 +65,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :class="item.class"
-            @click="favoriteHandler(item.id, headphonesList)"
+            @click="favoriteHandler(item.id, 'unWirelessHeadphonesData')"
           />
         </template>
       </CardList>
@@ -77,7 +80,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :class="item.class"
-            @click="favoriteHandler(item.id, wirelessHeadphonesList)"
+            @click="favoriteHandler(item.id, 'wirelessHeadphonesData')"
           />
         </template>
       </CardList>
@@ -85,3 +88,4 @@ function favoriteHandler(id: string, data: any) {
     <template #footer></template>
   </PageTemplate>
 </template>
+<!-- зделать суму доставки в пинию, исправить баг с суммой заказа и удаление товара в корзине, (в карточке товара добавть картинку и данные(написать в бекенде функцию которая отдает конкретный товар )) -->

@@ -8,6 +8,7 @@ const routes = [
   { path: "/bag", component: pages.BagPage },
   { path: "/favorites", component: pages.FavoritesPage },
   { path: "/contacts", component: pages.ContactPage },
+  { path: "/order", component: pages.OrderPage },
 ];
 const history = createWebHistory();
 
