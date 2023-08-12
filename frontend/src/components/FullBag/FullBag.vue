@@ -1,56 +1,95 @@
 <script setup lang="ts">
+import useHttp from "../../server/server";
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
+import { useAllBagHeadphones } from "../../store/allBagHeadphones";
 import { bagCardProduct, bagDelivery, BagTotal } from "../index";
-import {} from "../../layouts";
-const headphones = useHeadphones();
+import { onMounted, ref } from "vue";
+
+interface Iproduct {
+  img: string;
+  name: string;
+  rating: number;
+  cost: number;
+  oldCost: number;
+  id: string;
+  isOnBag: boolean;
+  quantity: number;
+  class: string;
+  allCost: number;
+}
+let clientWidth = document.documentElement.clientWidth;
+
+const unWirelessHeadphones = useHeadphones();
 const WirelessHeadphones = useWirelessHeadphones();
 
-function bagHandler(id: string, data: any) {
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].id === id) {
-      if (data == headphones.bagProducts) {
-        headphones.toogleBag(id);
-      } else {
-        WirelessHeadphones.toogleBag(id);
-      }
+const unWirelessHeadphonesBag = unWirelessHeadphones.bagProducts;
+const wirelessHeadphonesBag = WirelessHeadphones.bagProducts;
+
+const AllBagHeadphones = useAllBagHeadphones();
+
+let quantityProduct = ref(1);
+
+async function getFavoriteProduct() {
+  let headphonesList = ref<Iproduct[]>([]);
+  let wirelessHeadphonesList = ref<Iproduct[]>([]);
+
+  await useHttp("/unWirelessHeadphonesData").then((data) => {
+    headphonesList.value = data.respons.value.unWirelessHeadphonesData;
+  });
+  await useHttp("/wirelessHeadphonesData").then((data) => {
+    wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
+  });
+
+  let data = [...wirelessHeadphonesList.value, ...headphonesList.value];
+
+  let bag = [...unWirelessHeadphonesBag, ...wirelessHeadphonesBag];
+
+  bag.forEach((id) => {
+    let headphones = data.find((headphones) => id == headphones.id);
+    if (headphones) {
+      headphones.allCost = headphones.quantity * headphones.cost;
+      AllBagHeadphones.addHeadphones(headphones);
     }
-  }
+  });
 }
 
-let clientWidth = document.documentElement.clientWidth;
+function deleteFavoriteProduct(id: string) {
+  let index = AllBagHeadphones.headphones.findIndex((i) => i.id == id);
+  AllBagHeadphones.deleteHeadphones(index);
+  WirelessHeadphones.deleteBag(id);
+  unWirelessHeadphones.deleteBag(id);
+}
+
+onMounted(() => {
+  getFavoriteProduct();
+});
 </script>
 
 <template>
   <h2 class="mt-[89px]">Корзина</h2>
-  <div class="lg:flex lg:justify-between lg:w-[768px] md:w-[1100px]">
-    <div v-for="item in headphones.bagProducts">
-      <bagCardProduct
-        :img="item.img"
-        :name="item.name"
-        :cost="item.cost"
-        :id="item.id"
-        :quantityProduct="item.quantity"
-        @click="bagHandler(item.id, headphones.bagProducts)"
-        @plus="item.quantity++"
-        @minus="item.quantity <= 1 ? item.quantity : item.quantity--"
-      />
+  <div class="w-[768px] flex justify-between">
+    <div class="lg:block md:w-[1100px]">
+      <div v-for="item in AllBagHeadphones.headphones">
+        <bagCardProduct
+          :img="item.img"
+          :name="item.name"
+          :cost="item.cost"
+          :id="item.id"
+          :quantityProduct="item.quantity"
+          @plus="item.quantity++, quantityProduct++"
+          @minus="
+            if (!(item.quantity <= 1)) {
+              item.quantity--, quantityProduct--;
+            }
+          "
+          @click="deleteFavoriteProduct(item.id)"
+        />
+      </div>
+      <bagDelivery />
     </div>
     <BagTotal v-if="clientWidth > 768" />
   </div>
-  <div v-for="item in WirelessHeadphones.bagProducts">
-    <bagCardProduct
-      :img="item.img"
-      :name="item.name"
-      :cost="item.cost"
-      :id="item.id"
-      :quantityProduct="item.quantity"
-      @click="bagHandler(item.id, WirelessHeadphones.bagProducts)"
-      @plus="item.quantity++"
-      @minus="item.quantity <= 1 ? item.quantity : item.quantity--"
-    />
-  </div>
-  <bagDelivery />
 </template>
 
 <style scoped></style>

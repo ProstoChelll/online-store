@@ -15,6 +15,13 @@ export const useHeadphones = defineStore("Headphones", {
         this.bagProducts.splice(index, 1);
       }
     },
+    deleteBag(id: string) {
+      let index = this.bagProducts.findIndex((i: string) => i == id);
+      if (index == -1) {
+      } else {
+        this.bagProducts.splice(index, 1);
+      }
+    },
     addBag(id: string) {
       let index = this.bagProducts.findIndex((i: string) => i == id);
       if (index == -1) {

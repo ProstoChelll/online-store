@@ -7,7 +7,7 @@ interface Props {
     img: string,
     id: string,
     name: string,
-    rating: number,
+    rating: string,
     cost: number,
     oldCost: number
     class: string
@@ -44,7 +44,7 @@ function noticeHandler (){
     <div class="ProductCardPositionTxt">
       <div>
         <p class="ProductCardText mt-[10px]">{{ props.name }}</p>
-        <p v-if="props.rating !== 0" class="ProductCardText text-[#838383]"> <span class="icon-star text-[#FFCE7F] "></span>{{ props.rating }}</p>
+        <p v-if="props.rating !== '0'" class="ProductCardText text-[#838383]"> <span class="icon-star text-[#FFCE7F] "></span>{{ props.rating }}</p>
       </div>
       <div>
         <p class="ProductCardText text-[#FFCE7F]">{{ props.cost }} &#8376</p>

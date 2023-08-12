@@ -1,10 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useDeliver } from "../../store/Deliver";
+const deliver = useDeliver()
+</script>
 
 <template>
   <div class="card mt-[20px]">
     <div class="flex justify-between">
       <p>Доставка</p>
-      <p>499 &#8376</p>
+      <p>{{ deliver.deliver.cost }} &#8376</p>
     </div>
     <iframe
       class="mt-[20px] w-[240px] lg:w-[365px] md:h-[145px] md:w-[565px]"

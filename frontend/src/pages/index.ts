@@ -4,3 +4,4 @@ export { default as ProductPage } from "./ProductPage.vue";
 export { default as BagPage } from "./BagPage.vue";
 export { default as FavoritesPage } from "./FavoritesPage.vue";
 export { default as ContactPage } from "./ContactPage.vue";
+export { default as OrderPage } from "./OrderPage.vue";

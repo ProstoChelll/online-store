@@ -2,46 +2,52 @@
 import { PageTemplate } from "../layouts";
 import { productDescription, productReviews, BuyBtnFooter, CardProducStatic, MobileBuyBtnFooter } from "../components";
 import { useRoute } from "vue-router";
-import { useHeadphones } from "../store/HeadphonesData";
-import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import getDefiniteData from "../server/getDefiniteData";
+import { ref } from "vue";
+
+interface Iproduct {
+  img: string;
+  name: string;
+  rating: number;
+  cost: number;
+  oldCost: number;
+  id: string;
+  isOnBag: boolean;
+  quantity: number;
+  class: string;
+}
 
 const route = useRoute();
-const headphones = useHeadphones();
-const wirelessHeadphones = useWirelessHeadphones();
 
+const productData = {
+  catalogName: String(route.params.id.slice(1, 11)),
+  id: String(route.params.id.slice(11)),
+};
+
+let product = ref<Iproduct>();
+
+getDefiniteData(productData, `/catalog/:${route.params.id.slice(1)}`).then((data) => {
+  product.value = data.respons.value;
+});
 let clientWidth = document.documentElement.clientWidth;
 </script>
 <template>
   <PageTemplate>
     <template #header><span></span></template>
-    <template #body>
-      <template v-for="item in headphones.bagProducts">
-        <CardProducStatic
-          v-if="item.id == route.params.id.slice(11)"
-          :item="item"
-          :img="item.img"
-          :name="item.name"
-          :rating="0"
-          :cost="item.cost"
-          :oldCost="item.oldCost"
-          :id="item.id"
-        >
-        </CardProducStatic>
-      </template>
-      <template v-for="item in wirelessHeadphones.bagProducts">
-        <CardProducStatic
-          v-if="item.id == route.params.id.slice(11)"
-          :item="item"
-          :img="item.img"
-          :name="item.name"
-          :rating="0"
-          :cost="item.cost"
-          :oldCost="item.oldCost"
-          :id="item.id"
-        >
-        </CardProducStatic>
-      </template>
-      <div :class="clientWidth > 768 ? 'flex justify-between w-[768px] md:w-[1110px]' : 'block'">
+    <template #body
+      >+
+      <CardProducStatic
+        v-if="product"
+        :item="product"
+        :img="product.img"
+        :name="product.name"
+        :rating="0"
+        :cost="product.cost"
+        :oldCost="product.oldCost"
+        :id="product.id"
+      >
+      </CardProducStatic>
+      <div :class="clientWidth > 768 ? 'mt-[50px] flex justify-between w-[768px] md:w-[1110px]' : 'block'">
         <productDescription />
         <productReviews v-if="clientWidth < 768" />
         <BuyBtnFooter v-if="clientWidth > 768" />

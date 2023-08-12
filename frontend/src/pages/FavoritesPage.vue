@@ -3,45 +3,70 @@ import { PageTemplate, CardList } from "../layouts";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
 import { CardProduct } from "../components/index";
-import { ref } from "vue";
+import { Ref, onMounted, ref } from "vue";
 import useHttp from "../server/server";
 
-let headphonesList = ref();
-let wirelessHeadphonesList = ref();
-
-useHttp("/headphonesData").then((data) => {
-  headphonesList.value = data.respons.value.headphonesData;
-});
-useHttp("/wirelessHeadphonesList").then((data) => {
-  wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesList;
-});
+interface Iproduct {
+  img: string;
+  name: string;
+  rating: string;
+  cost: number;
+  oldCost: number;
+  id: string;
+  isOnBag: boolean;
+  quantity: number;
+  class: string;
+}
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
+const wirelesFavorites = wirelessHeadphones.favoritesProducts;
+const unWirelesfavorites = headphones.favoritesProducts;
 
-function favoriteHandler(id: string, data: any) {
-  if (data == headphones.favoritesProducts) {
+function favoriteHandler(id: string, data: string) {
+  if (data == "headphonesList") {
     headphones.addFavorites(id);
   } else {
     wirelessHeadphones.addFavorites(id);
   }
 }
-// const favoritesProducts: any[] = [];
-// for (let i = 0; i <= wirelessHeadphonesList.length + headphonesList.value.length; i++) {
-//   if (wirelessHeadphonesList.value[i].id == wirelessHeadphones.favoritesProducts.forEach((i) => i)) {
-//     favoritesProducts.push(wirelessHeadphonesList.value[i]);
-//   }
-// }
-// console.log(favoritesProducts);
-//
+
+const wirelesFavoritesProducts: Ref<any[]> = ref([]);
+
+async function getFavoriteProduct() {
+  let headphonesList = ref<Iproduct[]>([]);
+  let wirelessHeadphonesList = ref<Iproduct[]>([]);
+
+  await useHttp("/unWirelessHeadphonesData").then((data) => {
+    headphonesList.value = data.respons.value.unWirelessHeadphonesData;
+  });
+  await useHttp("/wirelessHeadphonesData").then((data) => {
+    wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
+  });
+
+  let data = [...wirelessHeadphonesList.value, ...headphonesList.value];
+
+  let favorites = [...wirelesFavorites, ...unWirelesfavorites];
+
+  favorites.forEach((id) => {
+    let headphones = data.find((headphones) => id == headphones.id);
+    if (headphones) {
+      wirelesFavoritesProducts.value.push(headphones);
+    }
+  });
+}
+
+onMounted(() => {
+  getFavoriteProduct();
+});
 </script>
 <template>
   <PageTemplate>
     <template #header><span></span></template>
     <template #body>
       <h2 class="MainTxt">Избранное</h2>
-      <CardList v-if="headphonesList.length > 0" title="">
-        <template v-for="item in headphonesList">
+      <CardList v-if="wirelesFavoritesProducts.length > 0" title="">
+        <template v-for="item in wirelesFavoritesProducts">
           <CardProduct
             :item="item"
             :img="item.img"
@@ -51,22 +76,7 @@ function favoriteHandler(id: string, data: any) {
             :oldCost="item.oldCost"
             :id="item.id"
             :class="item.class"
-            @click="favoriteHandler(item.id, headphones.favoritesProducts)"
-          />
-        </template>
-      </CardList>
-      <CardList v-if="wirelessHeadphonesList.length > 0" title="">
-        <template v-for="item in wirelessHeadphonesList">
-          <CardProduct
-            :item="item"
-            :img="item.img"
-            :name="item.name"
-            :rating="item.rating"
-            :cost="item.cost"
-            :oldCost="item.oldCost"
-            :id="item.id"
-            :class="item.class"
-            @click="favoriteHandler(item.id, headphones.favoritesProducts)"
+            @click="favoriteHandler(item.id, 'headphonesList')"
           />
         </template>
       </CardList>
