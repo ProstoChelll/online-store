@@ -3,9 +3,11 @@ import { PageTemplate } from "../layouts";
 import { emptyBag, fullBag, BagTotal } from "../components";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { usePhones } from "../store/phonesData";
 const headphones = useHeadphones();
 const WirelessHeadphones = useWirelessHeadphones();
-const choosenProducts = headphones.bagProducts.length + WirelessHeadphones.bagProducts.length;
+const phones = usePhones();
+const choosenProducts = headphones.bagProducts.length + WirelessHeadphones.bagProducts.length + phones.bagProducts.length;
 
 let clientWidth = document.documentElement.clientWidth;
 </script>

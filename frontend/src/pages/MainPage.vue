@@ -3,11 +3,6 @@ import { CardList, PageTemplate } from "../layouts";
 import { AdBlock, CardCategory, CardProduct } from "../components";
 import useHttp from "../server/server";
 import { ref } from "vue";
-import { useHeadphones } from "../store/HeadphonesData";
-import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
-
-const headphones = useHeadphones();
-const wirelessHeadphones = useWirelessHeadphones();
 
 let loading = ref(false);
 let error = ref();
@@ -31,14 +26,6 @@ useHttp("/wirelessHeadphonesData").then((data) => {
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
-
-function favoriteHandler(id: string, data: string) {
-  if (data == "unWirelessHeadphonesData") {
-    headphones.addFavorites(id);
-  } else {
-    wirelessHeadphones.addFavorites(id);
-  }
-}
 </script>
 
 <template>
@@ -65,7 +52,6 @@ function favoriteHandler(id: string, data: string) {
             :oldCost="item.oldCost"
             :id="item.id"
             :class="item.class"
-            @click="favoriteHandler(item.id, 'unWirelessHeadphonesData')"
           />
         </template>
       </CardList>
@@ -80,7 +66,6 @@ function favoriteHandler(id: string, data: string) {
             :oldCost="item.oldCost"
             :id="item.id"
             :class="item.class"
-            @click="favoriteHandler(item.id, 'wirelessHeadphonesData')"
           />
         </template>
       </CardList>
@@ -88,4 +73,3 @@ function favoriteHandler(id: string, data: string) {
     <template #footer></template>
   </PageTemplate>
 </template>
-<!-- зделать суму доставки в пинию, исправить баг с суммой заказа и удаление товара в корзине, (в карточке товара добавть картинку и данные(написать в бекенде функцию которая отдает конкретный товар )) -->

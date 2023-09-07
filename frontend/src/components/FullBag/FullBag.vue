@@ -3,6 +3,7 @@ import useHttp from "../../server/server";
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
 import { useAllBagHeadphones } from "../../store/allBagHeadphones";
+import { usePhones } from "../../store/phonesData";
 import { bagCardProduct, bagDelivery, BagTotal } from "../index";
 import { onMounted, ref } from "vue";
 
@@ -22,9 +23,11 @@ let clientWidth = document.documentElement.clientWidth;
 
 const unWirelessHeadphones = useHeadphones();
 const WirelessHeadphones = useWirelessHeadphones();
+const phone = usePhones();
 
 const unWirelessHeadphonesBag = unWirelessHeadphones.bagProducts;
 const wirelessHeadphonesBag = WirelessHeadphones.bagProducts;
+const phonesBag = phone.bagProducts;
 
 const AllBagHeadphones = useAllBagHeadphones();
 
@@ -33,6 +36,7 @@ let quantityProduct = ref(1);
 async function getFavoriteProduct() {
   let headphonesList = ref<Iproduct[]>([]);
   let wirelessHeadphonesList = ref<Iproduct[]>([]);
+  let phonesList = ref<Iproduct[]>([]);
 
   await useHttp("/unWirelessHeadphonesData").then((data) => {
     headphonesList.value = data.respons.value.unWirelessHeadphonesData;
@@ -40,10 +44,11 @@ async function getFavoriteProduct() {
   await useHttp("/wirelessHeadphonesData").then((data) => {
     wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
   });
-
-  let data = [...wirelessHeadphonesList.value, ...headphonesList.value];
-
-  let bag = [...unWirelessHeadphonesBag, ...wirelessHeadphonesBag];
+  await useHttp("/iphonessss").then((data) => {
+    phonesList.value = data.respons.value.iphonesData;
+  });
+  let data = [...wirelessHeadphonesList.value, ...headphonesList.value, ...phonesList.value];
+  let bag = [...unWirelessHeadphonesBag, ...wirelessHeadphonesBag, ...phonesBag];
 
   bag.forEach((id) => {
     let headphones = data.find((headphones) => id == headphones.id);
@@ -53,12 +58,12 @@ async function getFavoriteProduct() {
     }
   });
 }
-
 function deleteFavoriteProduct(id: string) {
   let index = AllBagHeadphones.headphones.findIndex((i) => i.id == id);
   AllBagHeadphones.deleteHeadphones(index);
   WirelessHeadphones.deleteBag(id);
   unWirelessHeadphones.deleteBag(id);
+  phone.deleteBag(id);
 }
 
 onMounted(() => {

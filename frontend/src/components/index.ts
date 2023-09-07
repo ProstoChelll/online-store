@@ -20,3 +20,6 @@ export { default as PaymentMethodCard } from "./OrderPageComponents/PaymentMetho
 export { default as NuberCard } from "./OrderPageComponents/NuberCard.vue";
 export { default as FinishCard } from "./OrderPageComponents/FinishCard.vue";
 export { default as InputBase } from "./InputBase/InputBase.vue";
+export { default as Profile } from "./HeaderBlock/Profile.vue";
+export { default as Registration } from "./RegistrationComponents/Registration.vue";
+export { default as Entrance } from "./EntranceComponents/Entrance.vue";
