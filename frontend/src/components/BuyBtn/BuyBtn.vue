@@ -4,9 +4,11 @@ import { useRoute } from "vue-router";
 import { saveNotice } from "../../components";
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
+import { usePhones } from "../../store/phonesData";
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
+const phones = usePhones();
 
 const route = useRoute();
 let saveToogle = ref(false);
@@ -26,8 +28,9 @@ function toogleBag() {
     headphones.toogleBag(productId as string);
   } else if (productClass == "wirelessHd") {
     wirelessHeadphones.toogleBag(productId as string);
+  } else {
+    phones.toogleBag(productId as string);
   }
-  console.log(wirelessHeadphones.bagProducts, headphones.bagProducts);
 }
 function addBag() {
   let productClass = route.params.id.slice(1, 11);
@@ -35,6 +38,8 @@ function addBag() {
     headphones.addBag(productId as string);
   } else if (productClass == "wirelessHd") {
     wirelessHeadphones.addBag(productId as string);
+  } else {
+    phones.addBag(productId as string);
   }
 }
 </script>

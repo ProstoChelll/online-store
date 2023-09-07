@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ChoosePhone, FavoritesAndBag } from "../components";
+import { ChoosePhone, FavoritesAndBag, Profile } from "../components";
 </script>
 <template>
   <div class="header">
     <ChoosePhone />
-    <FavoritesAndBag />
+    <div class="flex items-center">
+      <FavoritesAndBag />
+      <Profile />
+    </div>
   </div>
 </template>
 

@@ -5,7 +5,7 @@ interface Idata {
   bagProducts: string[];
 }
 
-export const useHeadphones = defineStore("Headphones", {
+export const usePhones = defineStore("Phones", {
   state: () =>
     ({
       favoritesProducts: [],

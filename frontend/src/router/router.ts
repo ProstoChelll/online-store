@@ -9,6 +9,8 @@ const routes = [
   { path: "/favorites", component: pages.FavoritesPage },
   { path: "/contacts", component: pages.ContactPage },
   { path: "/order", component: pages.OrderPage },
+  { path: "/registration", component: pages.RegistrationPage },
+  { path: "/entrance", component: pages.EntrancePage },
 ];
 const history = createWebHistory();
 

@@ -29,6 +29,7 @@ let product = ref<Iproduct>();
 getDefiniteData(productData, `/catalog/:${route.params.id.slice(1)}`).then((data) => {
   product.value = data.respons.value;
 });
+
 let clientWidth = document.documentElement.clientWidth;
 </script>
 <template>
@@ -45,6 +46,7 @@ let clientWidth = document.documentElement.clientWidth;
         :cost="product.cost"
         :oldCost="product.oldCost"
         :id="product.id"
+        :class="product.class"
       >
       </CardProducStatic>
       <div :class="clientWidth > 768 ? 'mt-[50px] flex justify-between w-[768px] md:w-[1110px]' : 'block'">

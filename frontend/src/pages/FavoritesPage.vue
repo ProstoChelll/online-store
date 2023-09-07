@@ -2,6 +2,7 @@
 import { PageTemplate, CardList } from "../layouts";
 import { useHeadphones } from "../store/HeadphonesData";
 import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import { usePhones } from "../store/phonesData";
 import { CardProduct } from "../components/index";
 import { Ref, onMounted, ref } from "vue";
 import useHttp from "../server/server";
@@ -20,9 +21,10 @@ interface Iproduct {
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
+const phone = usePhones();
 const wirelesFavorites = wirelessHeadphones.favoritesProducts;
 const unWirelesfavorites = headphones.favoritesProducts;
-
+const phoneFavorites = phone.favoritesProducts;
 function favoriteHandler(id: string, data: string) {
   if (data == "headphonesList") {
     headphones.addFavorites(id);
@@ -36,6 +38,7 @@ const wirelesFavoritesProducts: Ref<any[]> = ref([]);
 async function getFavoriteProduct() {
   let headphonesList = ref<Iproduct[]>([]);
   let wirelessHeadphonesList = ref<Iproduct[]>([]);
+  let phonesList = ref<Iproduct[]>([]);
 
   await useHttp("/unWirelessHeadphonesData").then((data) => {
     headphonesList.value = data.respons.value.unWirelessHeadphonesData;
@@ -43,10 +46,13 @@ async function getFavoriteProduct() {
   await useHttp("/wirelessHeadphonesData").then((data) => {
     wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
   });
+  await useHttp("/iphonessss").then((data) => {
+    phonesList.value = data.respons.value.iphonesData;
+  });
 
-  let data = [...wirelessHeadphonesList.value, ...headphonesList.value];
+  let data = [...wirelessHeadphonesList.value, ...headphonesList.value, ...phonesList.value];
 
-  let favorites = [...wirelesFavorites, ...unWirelesfavorites];
+  let favorites = [...wirelesFavorites, ...unWirelesfavorites, ...phoneFavorites];
 
   favorites.forEach((id) => {
     let headphones = data.find((headphones) => id == headphones.id);

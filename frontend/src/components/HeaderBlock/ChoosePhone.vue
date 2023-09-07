@@ -69,21 +69,52 @@ onMounted(() => {
               </div>
               <transition name="expandInMenu">
                 <div v-if="dataArr[i].tog.value" class="MenuProducts">
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 12</p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
-                    iPhone 12 Max
-                  </p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                  <router-link
+                    to="/catalog/:iphonessssiPhone12"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                    >iPhone 12</router-link
+                  >
+                  <router-link
+                    to="/catalog/:iphonessssiPhone12Pro"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                  >
+                    iPhone 12 Pro
+                  </router-link>
+                  <router-link
+                    to="/catalog/:iphonessssiPhone12ProMax"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                  >
                     iPhone 12 Pro Max
-                  </p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 13</p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
-                    iPhone 13 Max
-                  </p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">
+                  </router-link>
+                  <router-link
+                    to="/catalog/:iphonessssiPhone13"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                    >iPhone 13</router-link
+                  >
+                  <router-link
+                    to="/catalog/:iphonessssiPhone13Pro"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                  >
+                    iPhone 13 Pro
+                  </router-link>
+                  <router-link
+                    to="/catalog/:iphonessssiPhone13ProMax"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                  >
                     iPhone 13 Pro Max
-                  </p>
-                  <p id="PhoneCard" class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt">iPhone 14</p>
+                  </router-link>
+                  <router-link
+                    to="/catalog/:iphonessssiPhone14"
+                    id="PhoneCard"
+                    class="ChoosePhoneCardListSelectValueTxt lg:lgChoosePhoneCardListSelectValueTxt"
+                    >iPhone 14</router-link
+                  >
                 </div>
               </transition>
             </div>
@@ -121,5 +152,8 @@ onMounted(() => {
 }
 .MenuProducts {
   @apply w-[60px] h-[125px] bg-[#EAEAEA] block relative mt-[4px] ml-[10px];
+}
+.ChoosePhoneCardListSelectValueTxt {
+  @apply block w-[130px];
 }
 </style>

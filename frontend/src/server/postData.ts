@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-async function getDefiniteData(Product: any, url: string) {
+async function getDefiniteData(user: any, url: string) {
   const loading = ref(false);
   const error = ref("");
   const respons = ref();
@@ -11,7 +11,7 @@ async function getDefiniteData(Product: any, url: string) {
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify(Product),
+    body: JSON.stringify(user),
   });
 
   if (!res.ok) {

@@ -1,6 +1,14 @@
 <script setup lang="ts"> 
 import {ref} from 'vue'
 import  {saveNotice}  from "../index"
+import { useHeadphones } from "../../store/HeadphonesData";
+import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
+import { usePhones } from "../../store/phonesData";
+
+const headphones = useHeadphones();
+const wirelessHeadphones = useWirelessHeadphones();
+const phones = usePhones()
+
 interface Props {
     item:any
     img: string,
@@ -8,11 +16,11 @@ interface Props {
     name: string,
     rating: number,
     cost: number,
-    oldCost: number
+    oldCost: number,
+    class: string
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits(["click"]) 
 
 let saveToogle = ref(false);
 let toggleColor = ref(false)
@@ -22,12 +30,20 @@ function noticeHandler (){
   setTimeout(() => {
     saveToogle.value = !saveToogle.value;
   }, 1100);
-  emit('click');
+}
+function favoriteHandler(id: string, data: string) {
+  if (data == "headhpones") {
+    headphones.addFavorites(id);
+  } else if (data == "iphonessss"){
+    phones.addFavorites(id);
+  } else {
+    wirelessHeadphones.addFavorites(id);
+  }
 }
 </script>
 <template> 
   <div :class="$style.card" :id="props.id"> 
-   <span @click="noticeHandler(),  toggleColor = !toggleColor"  
+   <span @click="noticeHandler(),favoriteHandler(props.id,props.class),  toggleColor = !toggleColor"  
  
    :class="[
     $style.heart_icon,
