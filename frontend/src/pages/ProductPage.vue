@@ -25,7 +25,6 @@ const productData = {
 };
 
 let product = ref<Iproduct>();
-
 getDefiniteData(productData, `/catalog/:${route.params.id.slice(1)}`).then((data) => {
   product.value = data.respons.value;
 });

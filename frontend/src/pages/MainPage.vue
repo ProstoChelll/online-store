@@ -10,19 +10,18 @@ let headphonesList = ref();
 let coversList = ref();
 let wirelessHeadphonesList = ref();
 
-useHttp("/unWirelessHeadphonesData").then((data) => {
-  headphonesList.value = data.respons.value.unWirelessHeadphonesData;
-  loading.value = data.loading.value;
-  error.value = data.error.value;
-});
 useHttp("/coversData").then((data) => {
-  coversList.value = data.respons.value.coversData;
+  coversList.value = data.respons.value[0].coversData;
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
-
+useHttp("/unWirelessHeadphonesData").then((data) => {
+  headphonesList.value = data.respons.value[0].unWirelessHeadphonesData;
+  loading.value = data.loading.value;
+  error.value = data.error.value;
+});
 useHttp("/wirelessHeadphonesData").then((data) => {
-  wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
+  wirelessHeadphonesList.value = data.respons.value[0].wirelessHeadphonesData;
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
