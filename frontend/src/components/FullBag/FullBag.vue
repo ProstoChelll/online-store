@@ -39,13 +39,13 @@ async function getFavoriteProduct() {
   let phonesList = ref<Iproduct[]>([]);
 
   await useHttp("/unWirelessHeadphonesData").then((data) => {
-    headphonesList.value = data.respons.value.unWirelessHeadphonesData;
+    headphonesList.value = data.respons.value[0].unWirelessHeadphonesData;
   });
   await useHttp("/wirelessHeadphonesData").then((data) => {
-    wirelessHeadphonesList.value = data.respons.value.wirelessHeadphonesData;
+    wirelessHeadphonesList.value = data.respons.value[0].wirelessHeadphonesData;
   });
   await useHttp("/iphonessss").then((data) => {
-    phonesList.value = data.respons.value.iphonesData;
+    phonesList.value = data.respons.value[0].iphonesData;
   });
   let data = [...wirelessHeadphonesList.value, ...headphonesList.value, ...phonesList.value];
   let bag = [...unWirelessHeadphonesBag, ...wirelessHeadphonesBag, ...phonesBag];
