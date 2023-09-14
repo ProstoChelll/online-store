@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useDeliver } from "../../store/Deliver";
 import {useAllBagHeadphones} from "../../store/allBagHeadphones"
 const deliver = useDeliver()
+
+const x = ref(0)
+const xOne = ref(0)
 
 const headphones = useAllBagHeadphones()
 </script>
@@ -12,7 +16,7 @@ const headphones = useAllBagHeadphones()
     <div class=" flex flex-col gap-[5px]">
       <div class="flex justify-between"><p>товар</p><p>&#8376 {{ headphones.getAllCost.map(i=>x+=i, x=0).reverse()[0] }}</p></div>
       <div class="flex justify-between"><p>Доставка</p><p>&#8376 {{ deliver.deliver.cost }}</p></div>
-      <div class="flex justify-between"><p>К оплате</p><p>&#8376 {{headphones.getAllCost.map(i=>x+=i, x=0).reverse()[0] + deliver.deliver.cost  }}</p></div>
+      <div class="flex justify-between"><p>К оплате</p><p>&#8376 {{headphones.getAllCost.map(i=>xOne+=i, xOne=0).reverse()[0] + deliver.deliver.cost  }}</p></div>
     </div>
   </div>
 </template>

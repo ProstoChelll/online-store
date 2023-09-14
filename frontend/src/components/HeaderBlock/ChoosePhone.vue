@@ -18,7 +18,7 @@ const dataArr: IArr[] = [
 ];
 const ChooseModelPhone = ref(null);
 
-function clickOutside(e: MouseEvent): any {
+function clickOutside(e: any): any {
   if (e.target.id == "PhoneCard") {
   } else {
     tog.value = false;

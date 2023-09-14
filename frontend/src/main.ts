@@ -1,4 +1,4 @@
-import { createApp, Directive  } from "vue";
+import { createApp } from "vue";
 import { createPinia } from "pinia";
 import "./css/index.css";
 import "./css/iconsStyle.css";
@@ -10,9 +10,3 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia);
 app.mount("#app");
-
-// app.directive("click-outside", <Directive/>)
-
-
-
- 

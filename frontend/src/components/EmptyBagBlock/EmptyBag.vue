@@ -2,7 +2,7 @@
 
 <template>
   <div class="Display">
-    <img src="src/images/bag.svg" class="mt-[85px]" />
+    <img src="../../images/bag.png" class="mt-[85px]" />
     <h3 class="BagEmpty">Корзина пуста</h3>
     <p class="BagText">Но это никогда не поздно исправить :)</p>
     <router-link to="/"><button class="BagBtn">В каталог товаров</button></router-link>

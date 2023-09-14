@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import {useAllBagHeadphones} from "../../store/allBagHeadphones"
 
 const headphones = useAllBagHeadphones()
+const x = ref(0)
 
 </script>
 
