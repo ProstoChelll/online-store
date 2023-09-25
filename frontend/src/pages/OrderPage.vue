@@ -1,8 +1,34 @@
 <script setup lang="ts">
 import { PageTemplate } from "../layouts";
 import { OrderPageDelivery, PriceCard, PaymentMethodCard, NuberCard, FinishCard } from "../components";
+import { useHeadphones } from "../store/HeadphonesData";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+import getDefiniteData from "../server/getDefiniteData";
+import { useUser } from "../store/user";
+import { useRouter } from "vue-router";
 
-function validation() {}
+const user = useUser();
+const headphones = useHeadphones();
+const wirelessHeadphones = useWirelessHeadphones();
+const route = useRouter();
+
+function finishOrder() {
+  const userData = {
+    token: user.token,
+    data: {
+      bagProducts: {
+        wireles: [],
+        headphones: [],
+      },
+      favoritesProducts: {
+        wireles: [...wirelessHeadphones.favoritesProducts],
+        headphones: [...headphones.favoritesProducts],
+      },
+    },
+  };
+  getDefiniteData(userData, "/updateDate");
+  route.push({ name: "main" });
+}
 </script>
 
 <template>
@@ -16,7 +42,7 @@ function validation() {}
           <PriceCard />
           <PaymentMethodCard />
           <NuberCard />
-          <FinishCard @click="validation()" />
+          <FinishCard @click="finishOrder()" />
         </div>
       </div>
     </template>

@@ -13,7 +13,7 @@
     "@pinia/nuxt": "^0.4.9",
     "pinia": "^2.0.35",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.4",

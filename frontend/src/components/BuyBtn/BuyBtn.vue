@@ -5,10 +5,13 @@ import { saveNotice } from "../../components";
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
 import { usePhones } from "../../store/phonesData";
+import getDefiniteData from "../../server/getDefiniteData";
+import { useUser } from "../../store/user";
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
 const phones = usePhones();
+const user = useUser();
 
 const route = useRoute();
 let saveToogle = ref(false);
@@ -42,17 +45,33 @@ function addBag() {
     phones.addBag(productId as string);
   }
 }
+function addToDb() {
+  const userData = {
+    token: user.token,
+    data: {
+      bagProducts: {
+        wireles: [...wirelessHeadphones.bagProducts],
+        headphones: [...headphones.bagProducts],
+      },
+      favoritesProducts: {
+        wireles: [...wirelessHeadphones.favoritesProducts],
+        headphones: [...headphones.favoritesProducts],
+      },
+    },
+  };
+  getDefiniteData(userData, "/updateDate");
+}
 </script>
 
 <template>
   <slot>
     <div class="flex flex-col gap-[17px] mt-[20px]">
       <router-link to="/bag">
-        <div class="bigCard" @click="addBag()">
+        <div class="bigCard" @click="addBag(), addToDb()">
           <p class="text-white">Купить!</p>
         </div>
       </router-link>
-      <div class="littleCard" @click="toogleBag(), noticeHandler()">
+      <div class="littleCard" @click="toogleBag(), addToDb(), noticeHandler()">
         <span class="icon-basket text-[20px] text-white pr-[10px]"></span>
         <p :class="$style.bagStyle">Добавить в корзину</p>
       </div>

@@ -6,6 +6,10 @@ import { useAllBagHeadphones } from "../../store/allBagHeadphones";
 import { usePhones } from "../../store/phonesData";
 import { bagCardProduct, bagDelivery, BagTotal } from "../index";
 import { onMounted, ref } from "vue";
+import getDefiniteData from "../../server/getDefiniteData";
+import { useUser } from "../../store/user";
+
+const user = useUser();
 
 interface Iproduct {
   img: string;
@@ -66,6 +70,23 @@ function deleteFavoriteProduct(id: string) {
   phone.deleteBag(id);
 }
 
+function addToDb() {
+  const userData = {
+    token: user.token,
+    data: {
+      bagProducts: {
+        wireles: [...WirelessHeadphones.bagProducts],
+        headphones: [...unWirelessHeadphones.bagProducts],
+      },
+      favoritesProducts: {
+        wireles: [...WirelessHeadphones.favoritesProducts],
+        headphones: [...unWirelessHeadphones.favoritesProducts],
+      },
+    },
+  };
+  getDefiniteData(userData, "/updateDate");
+}
+
 onMounted(() => {
   getFavoriteProduct();
 });
@@ -88,7 +109,7 @@ onMounted(() => {
               item.quantity--, quantityProduct--;
             }
           "
-          @click="deleteFavoriteProduct(item.id)"
+          @click="deleteFavoriteProduct(item.id), addToDb()"
         />
       </div>
       <bagDelivery />

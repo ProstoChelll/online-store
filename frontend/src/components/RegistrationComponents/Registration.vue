@@ -3,6 +3,24 @@ import { ref } from "vue";
 import { PageTemplate } from "../../layouts";
 import { validationNick, validationPassword, checkSamePasswords, fullCheck } from "../../functions/registValidationFuncions";
 import getDefiniteData from "../../server/getDefiniteData";
+import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
+import { useHeadphones } from "../../store/HeadphonesData";
+const wirelesseHeadphones = useWirelessHeadphones();
+const headphones = useHeadphones();
+
+interface Iuser {
+  nickname: string;
+  password: string;
+  bagProducts: {};
+  favoritesProducts: {};
+}
+
+let user = {
+  nickname: "",
+  password: "",
+  bagProducts: {},
+  favoritesProducts: {},
+} as Iuser;
 
 let nikcname = ref("");
 let password = ref("");
@@ -10,11 +28,14 @@ let password2 = ref("");
 
 function sendUserData() {
   if (!fullCheck()) {
-    const userData = {
-      nikcname: nikcname.value,
-      password: password.value,
+    user.nickname = nikcname.value;
+    user.password = password.value;
+    user.bagProducts = { wireles: [...wirelesseHeadphones.bagProducts], headphones: [...headphones.bagProducts] };
+    user.favoritesProducts = {
+      wireles: [...wirelesseHeadphones.favoritesProducts],
+      headphones: [...headphones.favoritesProducts],
     };
-    getDefiniteData(userData, "/registration");
+    getDefiniteData(user, "/registration");
   }
 }
 </script>
@@ -72,7 +93,8 @@ function sendUserData() {
               },
             ]"
           >
-            Зарегистрировать
+            <span v-if="fullCheck()">Зарегистрироваться</span>
+            <router-link v-if="!fullCheck()" to="/entrance">Зарегистрироваться</router-link>
           </button>
         </div>
       </div>

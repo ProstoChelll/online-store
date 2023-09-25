@@ -4,10 +4,13 @@ import  {saveNotice}  from "../index"
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
 import { usePhones } from "../../store/phonesData";
+import getDefiniteData from "../../server/getDefiniteData";
+import {useUser} from "../../store/user"
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
 const phones = usePhones()
+const user = useUser()
 
 interface Props {
     item:any
@@ -39,6 +42,20 @@ function favoriteHandler(id: string, data: string) {
   } else {
     wirelessHeadphones.addFavorites(id);
   }
+  const userData = {
+    token: user.token,
+    data:{
+      bagProducts:{
+        wireles:[...wirelessHeadphones.bagProducts],
+        headphones:[...headphones.bagProducts]
+      },
+      favoritesProducts:{
+        wireles:[...wirelessHeadphones.favoritesProducts],
+        headphones:[...headphones.favoritesProducts]
+      }
+    }
+  }
+  getDefiniteData(userData,"/updateDate")
 }
 </script>
 <template> 

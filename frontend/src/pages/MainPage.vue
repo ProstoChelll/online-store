@@ -3,12 +3,41 @@ import { CardList, PageTemplate } from "../layouts";
 import { AdBlock, CardCategory, CardProduct } from "../components";
 import useHttp from "../server/server";
 import { ref } from "vue";
+import getDefiniteData from "../server/getDefiniteData";
+import { useUser } from "../store/user";
+import { useHeadphones } from "../store/HeadphonesData";
+import { useWirelessHeadphones } from "../store/WirelesseHeadphonesData";
+
+const headphonesStore = useHeadphones();
+const wirelesStore = useWirelessHeadphones();
+
+const user = useUser();
 
 let loading = ref(false);
 let error = ref();
 let headphonesList = ref();
 let coversList = ref();
 let wirelessHeadphonesList = ref();
+
+if (localStorage.getItem("token")) {
+  const token = {
+    token: localStorage.getItem("token"),
+  };
+  getDefiniteData(token, "/getUserData").then((data) => {
+    console.log(data.respons.value);
+    user.changeNickname(data.respons.value.nickname);
+    user.authentication = true;
+    user.changeToken(data.respons.value.token);
+    user.changeBagWireles(data.respons.value.bagProducts.wireles);
+    user.changeBagHeadphones(data.respons.value.bagProducts.headphones);
+    user.changeFavoritesWireles(data.respons.value.favoritesProducts.wireles);
+    user.changeFavoritesHeadphones(data.respons.value.favoritesProducts.headphones);
+    headphonesStore.favoritesProducts = [...data.respons.value.favoritesProducts.headphones];
+    wirelesStore.favoritesProducts = [...data.respons.value.favoritesProducts.wireles];
+    headphonesStore.bagProducts = [...data.respons.value.bagProducts.headphones];
+    wirelesStore.bagProducts = [...data.respons.value.bagProducts.wireles];
+  });
+}
 
 useHttp("/coversData").then((data) => {
   coversList.value = data.respons.value[0].coversData;
@@ -72,3 +101,4 @@ useHttp("/wirelessHeadphonesData").then((data) => {
     <template #footer></template>
   </PageTemplate>
 </template>
+<!-- положить картинки в сервер -->

@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { PageTemplate } from "../../layouts";
 import getDefiniteData from "../../server/getDefiniteData";
+import { useUser } from "../../store/user";
+
+const user = useUser();
 
 let nikcname = ref("");
 let password = ref("");
+
+const route = useRouter();
 
 const checkUsersdata = () => {
   const userData = {
@@ -12,8 +18,16 @@ const checkUsersdata = () => {
     password: password.value,
   };
   getDefiniteData(userData, "/entrance").then((data) => {
-    console.log(data.respons.value);
     if (data.respons.value) {
+      user.changeNickname(userData.nikcname);
+      user.authentication = true;
+      localStorage.setItem("token", `${data.respons.value.token}`);
+      user.changeToken(data.respons.value.token);
+      user.changeBagWireles(data.respons.value.bagProducts.wireles);
+      user.changeBagHeadphones(data.respons.value.bagProducts.headphones);
+      user.changeFavoritesWireles(data.respons.value.favoritesProducts.wireles);
+      user.changeFavoritesHeadphones(data.respons.value.favoritesProducts.headphones);
+      route.push({ name: "main" });
     }
   });
 };

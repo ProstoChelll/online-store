@@ -4,9 +4,12 @@ import  {saveNotice}  from '../index'
 import { CardOverlay } from '../../layouts/index'
 import { useHeadphones } from "../../store/HeadphonesData";
 import { useWirelessHeadphones } from "../../store/WirelesseHeadphonesData";
+import getDefiniteData from "../../server/getDefiniteData";
+import {useUser} from "../../store/user"
 
 const headphones = useHeadphones();
 const wirelessHeadphones = useWirelessHeadphones();
+const user = useUser()
 
 interface Props {
     item:any
@@ -36,7 +39,21 @@ function favoriteHandler(id: string, data: string) {
     headphones.addFavorites(id);
   } else {
     wirelessHeadphones.addFavorites(id);
+  };
+  const userData = {
+    token: user.token,
+    data:{
+      bagProducts:{
+        wireles:[...wirelessHeadphones.bagProducts],
+        headphones:[...headphones.bagProducts]
+      },
+      favoritesProducts:{
+        wireles:[...wirelessHeadphones.favoritesProducts],
+        headphones:[...headphones.favoritesProducts]
+      }
+    }
   }
+  getDefiniteData(userData,"/updateDate")
 }
 </script>
 <template> 
