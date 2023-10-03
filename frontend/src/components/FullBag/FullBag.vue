@@ -71,20 +71,14 @@ function deleteFavoriteProduct(id: string) {
 }
 
 function addToDb() {
-  const userData = {
+  const userBag = {
     token: user.token,
-    data: {
-      bagProducts: {
-        wireles: [...WirelessHeadphones.bagProducts],
-        headphones: [...unWirelessHeadphones.bagProducts],
-      },
-      favoritesProducts: {
-        wireles: [...WirelessHeadphones.favoritesProducts],
-        headphones: [...unWirelessHeadphones.favoritesProducts],
-      },
+    bagProducts: {
+      wireles: [...wirelessHeadphonesBag],
+      headphones: [...unWirelessHeadphonesBag],
     },
   };
-  getDefiniteData(userData, "/updateDate");
+  getDefiniteData(userBag, "/updateBag");
 }
 
 onMounted(() => {

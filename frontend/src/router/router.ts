@@ -18,6 +18,8 @@ export default createRouter({
       name: "entrance",
       component: pages.EntrancePage,
       beforeEnter: (to, from, next) => {
+        to;
+        from;
         const user = useUser();
         if (user.authentication) {
           next({ name: "main" });

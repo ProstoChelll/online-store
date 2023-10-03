@@ -46,20 +46,14 @@ function addBag() {
   }
 }
 function addToDb() {
-  const userData = {
+  const userBag = {
     token: user.token,
-    data: {
-      bagProducts: {
-        wireles: [...wirelessHeadphones.bagProducts],
-        headphones: [...headphones.bagProducts],
-      },
-      favoritesProducts: {
-        wireles: [...wirelessHeadphones.favoritesProducts],
-        headphones: [...headphones.favoritesProducts],
-      },
+    bagProducts: {
+      wireles: [...wirelessHeadphones.bagProducts],
+      headphones: [...headphones.bagProducts],
     },
   };
-  getDefiniteData(userData, "/updateDate");
+  getDefiniteData(userBag, "/updateBag");
 }
 </script>
 

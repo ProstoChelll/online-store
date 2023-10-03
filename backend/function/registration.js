@@ -12,8 +12,6 @@ const registration = (app, path, mongoClient, collectionName) => {
         name: req.body.nickname,
         password: hashedPassword,
         token: "123",
-        bagProducts: req.body.bagProducts,
-        favoritesProducts: req.body.favoritesProducts,
       };
       const result = await collection.insertOne(user);
     } else {

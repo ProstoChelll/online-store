@@ -5,7 +5,10 @@ const sendProduct = require("../function/sendProduct");
 const registration = require("../function/registration");
 const entrance = require("../function/entrance");
 const getUserData = require("../function/getUserData");
-const updateDate = require("../function/updateDate");
+const updateBag = require("../function/updateBag");
+const updateFavorites = require("../function/updateFavorites");
+const addBagData = require("../function/addBagData");
+const addFavoritesData = require("../function/addFavoritesData");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const uri = "mongodb+srv://tim:qIV9ZLONHGcqHBxP@cluster0.h3fzhat.mongodb.net/?retryWrites=true&w=majority";
@@ -46,6 +49,12 @@ registration(app, "/registration", mongoClient, "usersData");
 
 entrance(app, "/entrance", mongoClient, "usersData");
 
+addBagData(app, "/addBagData", mongoClient, "usersData");
+
+addFavoritesData(app, "/entrance", mongoClient, "usersData");
+
 getUserData(app, "/getUserData", mongoClient, "usersData");
 
-updateDate(app, "/updateDate", mongoClient, "usersData");
+updateBag(app, "/updateBag", mongoClient, "userBag");
+
+updateFavorites(app, "/userFavorites", mongoClient, "userFavorites");

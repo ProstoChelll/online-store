@@ -24,7 +24,6 @@ if (localStorage.getItem("token")) {
     token: localStorage.getItem("token"),
   };
   getDefiniteData(token, "/getUserData").then((data) => {
-    console.log(data.respons.value);
     user.changeNickname(data.respons.value.nickname);
     user.authentication = true;
     user.changeToken(data.respons.value.token);
@@ -54,6 +53,7 @@ useHttp("/wirelessHeadphonesData").then((data) => {
   loading.value = data.loading.value;
   error.value = data.error.value;
 });
+debugger;
 </script>
 
 <template>
@@ -101,4 +101,3 @@ useHttp("/wirelessHeadphonesData").then((data) => {
     <template #footer></template>
   </PageTemplate>
 </template>
-<!-- положить картинки в сервер -->

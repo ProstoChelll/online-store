@@ -4,7 +4,6 @@ async function useHttp(url: string) {
   const loading = ref(false);
   const error = ref("");
   const respons = ref();
-
   loading.value = true;
   const res = await fetch("http://localhost:5174" + url, {
     method: "GET",

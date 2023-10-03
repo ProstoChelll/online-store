@@ -11,16 +11,16 @@ const headphones = useHeadphones();
 interface Iuser {
   nickname: string;
   password: string;
-  bagProducts: {};
-  favoritesProducts: {};
 }
 
 let user = {
   nickname: "",
   password: "",
-  bagProducts: {},
-  favoritesProducts: {},
 } as Iuser;
+
+let bagData = {};
+
+let favoritesData = {};
 
 let nikcname = ref("");
 let password = ref("");
@@ -30,12 +30,16 @@ function sendUserData() {
   if (!fullCheck()) {
     user.nickname = nikcname.value;
     user.password = password.value;
-    user.bagProducts = { wireles: [...wirelesseHeadphones.bagProducts], headphones: [...headphones.bagProducts] };
-    user.favoritesProducts = {
+
+    bagData = { nickname: user.nickname, wireles: [...wirelesseHeadphones.bagProducts], headphones: [...headphones.bagProducts] };
+    favoritesData = {
+      nickname: user.nickname,
       wireles: [...wirelesseHeadphones.favoritesProducts],
       headphones: [...headphones.favoritesProducts],
     };
     getDefiniteData(user, "/registration");
+    getDefiniteData(bagData, "/addBagData");
+    getDefiniteData(favoritesData, "/addFavoritesData");
   }
 }
 </script>

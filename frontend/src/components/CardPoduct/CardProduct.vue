@@ -40,20 +40,14 @@ function favoriteHandler(id: string, data: string) {
   } else {
     wirelessHeadphones.addFavorites(id);
   };
-  const userData = {
+  const userFavorites = {
     token: user.token,
-    data:{
-      bagProducts:{
-        wireles:[...wirelessHeadphones.bagProducts],
-        headphones:[...headphones.bagProducts]
-      },
-      favoritesProducts:{
+    favoritesProducts:{
         wireles:[...wirelessHeadphones.favoritesProducts],
         headphones:[...headphones.favoritesProducts]
       }
-    }
   }
-  getDefiniteData(userData,"/updateDate")
+  getDefiniteData(userFavorites,"/userFavorites")
 }
 </script>
 <template> 
