@@ -1,4 +1,4 @@
-const getUserData = (app, path, mongoClient, collectionName) => {
+const getProfile = (app, path, mongoClient, collectionName) => {
   app.post(`${path}`, async (req, res) => {
     const db = mongoClient.db("iphoneShop");
     let collection = db.collection(`${collectionName}`);
@@ -23,4 +23,4 @@ const getUserData = (app, path, mongoClient, collectionName) => {
   });
 };
 
-module.exports = getUserData;
+module.exports = getProfile;

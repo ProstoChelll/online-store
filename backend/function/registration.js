@@ -14,6 +14,7 @@ const registration = (app, path, mongoClient, collectionName) => {
         token: "123",
       };
       const result = await collection.insertOne(user);
+      res.json(true);
     } else {
       res.status(401).json({ message: "user with this nickname already exists" });
     }

@@ -4,7 +4,7 @@ const findCatalogProducts = require("../function/catalog/findCatalogProducts");
 const sendProduct = require("../function/sendProduct");
 const registration = require("../function/registration");
 const entrance = require("../function/entrance");
-const getUserData = require("../function/getUserData");
+const getProfile = require("../function/getUserData");
 const updateBag = require("../function/updateBag");
 const updateFavorites = require("../function/updateFavorites");
 const addBagData = require("../function/addBagData");
@@ -51,9 +51,9 @@ entrance(app, "/entrance", mongoClient, "usersData");
 
 addBagData(app, "/addBagData", mongoClient, "usersData");
 
-addFavoritesData(app, "/entrance", mongoClient, "usersData");
+addFavoritesData(app, "/addFavoritesData", mongoClient, "usersData");
 
-getUserData(app, "/getUserData", mongoClient, "usersData");
+getProfile(app, "/getUserData", mongoClient, "usersData");
 
 updateBag(app, "/updateBag", mongoClient, "userBag");
 

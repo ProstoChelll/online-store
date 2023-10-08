@@ -44,16 +44,16 @@ export const useUser = defineStore("User", {
       this.authentication = !this.authentication;
     },
     changeBagWireles(data: any) {
-      this.bagProducts.wireles.push(...data);
+      this.bagProducts.wireles.push(data);
     },
     changeBagHeadphones(data: any) {
-      this.bagProducts.headphones.push(...data);
+      this.bagProducts.headphones.push(data);
     },
     changeFavoritesWireles(data: any) {
-      this.favoritesProducts.wireles.push(...data);
+      this.favoritesProducts.wireles.push(data);
     },
     changeFavoritesHeadphones(data: any) {
-      this.favoritesProducts.headphones.push(...data);
+      this.favoritesProducts.headphones.push(data);
     },
   },
 });

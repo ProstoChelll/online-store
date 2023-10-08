@@ -5,7 +5,7 @@
       <p class="textStyleAdBlock">Аксессуары для<br />Iphone 13 Pro Max</p>
     </div>
     <div class="PositionImg">
-      <img src="../../../adImage.png" />
+      <img src="../../../public/adImage.png" />
     </div>
   </div>
 </template>

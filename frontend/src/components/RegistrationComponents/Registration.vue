@@ -8,38 +8,34 @@ import { useHeadphones } from "../../store/HeadphonesData";
 const wirelesseHeadphones = useWirelessHeadphones();
 const headphones = useHeadphones();
 
-interface Iuser {
-  nickname: string;
-  password: string;
-}
-
-let user = {
-  nickname: "",
-  password: "",
-} as Iuser;
-
-let bagData = {};
-
-let favoritesData = {};
-
 let nikcname = ref("");
 let password = ref("");
 let password2 = ref("");
 
 function sendUserData() {
   if (!fullCheck()) {
-    user.nickname = nikcname.value;
-    user.password = password.value;
+    let user = {
+      nickname: nikcname.value,
+      password: password.value,
+    };
 
-    bagData = { nickname: user.nickname, wireles: [...wirelesseHeadphones.bagProducts], headphones: [...headphones.bagProducts] };
-    favoritesData = {
+    const bagData = {
+      nickname: user.nickname,
+      wireles: [...wirelesseHeadphones.bagProducts],
+      headphones: [...headphones.bagProducts],
+    };
+    const favoritesData = {
       nickname: user.nickname,
       wireles: [...wirelesseHeadphones.favoritesProducts],
       headphones: [...headphones.favoritesProducts],
     };
-    getDefiniteData(user, "/registration");
-    getDefiniteData(bagData, "/addBagData");
-    getDefiniteData(favoritesData, "/addFavoritesData");
+
+    getDefiniteData(user, "/registration").then((data) => {
+      if (data.respons.value == true) {
+        getDefiniteData(favoritesData, "/addFavoritesData");
+        getDefiniteData(bagData, "/addBagData");
+      }
+    });
   }
 }
 </script>

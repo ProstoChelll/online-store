@@ -3,7 +3,7 @@ const addBagData = (app, path, mongoClient, collectionName) => {
     const db = mongoClient.db("iphoneShop");
     let collection = db.collection(`${collectionName}`);
 
-    const dbUser = await collection.find({ name: `${req.body.nickname}` }).toArray();
+    const dbUser = await collection.find({ name: req.body.nickname }).toArray();
     if (!dbUser.length == 0) {
       const dbUserToken = dbUser[0].token;
       const data = {
@@ -18,5 +18,4 @@ const addBagData = (app, path, mongoClient, collectionName) => {
     }
   });
 };
-
 module.exports = addBagData;
