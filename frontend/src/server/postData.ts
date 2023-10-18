@@ -6,7 +6,7 @@ async function getDefiniteData(user: any, url: string) {
   const respons = ref();
 
   loading.value = true;
-  const res = await fetch("http://62.217.177.70:5174" + url, {
+  const res = await fetch("http://62.217.177.70:3000" + url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
