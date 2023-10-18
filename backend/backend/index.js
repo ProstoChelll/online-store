@@ -20,7 +20,7 @@ const mongoClient = new MongoClient(uri, {
   },
 });
 
-const PORT = 5174;
+const PORT = 3000;
 const app = express();
 
 app.use(cors());
