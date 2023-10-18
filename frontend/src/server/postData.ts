@@ -6,7 +6,7 @@ async function getDefiniteData(user: any, url: string) {
   const respons = ref();
 
   loading.value = true;
-  const res = await fetch("http://62.217.177.70" + url, {
+  const res = await fetch("http://62.217.177.70:5174" + url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -34,4 +34,4 @@ async function getDefiniteData(user: any, url: string) {
 
 export default getDefiniteData;
 // http://localhost:5174
-// http://62.217.177.70
+// http://62.217.177.70:5174
