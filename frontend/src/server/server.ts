@@ -5,7 +5,7 @@ async function useHttp(url: string) {
   const error = ref("");
   const respons = ref();
   loading.value = true;
-  const res = await fetch("http://62.217.177.70" + url, {
+  const res = await fetch("http://62.217.177.70:3000" + url, {
     method: "GET",
   });
   if (!res.ok) {
@@ -28,4 +28,4 @@ async function useHttp(url: string) {
 
 export default useHttp;
 // http://localhost:5174
-// http://62.217.177.70
+// http://62.217.177.70:5174
