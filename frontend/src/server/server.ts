@@ -5,7 +5,7 @@ async function useHttp(url: string) {
   const error = ref("");
   const respons = ref();
   loading.value = true;
-  const res = await fetch("http://62.217.177.70:3000" + url, {
+  const res = await fetch("http://localhost:5174" + url, {
     method: "GET",
   });
   if (!res.ok) {

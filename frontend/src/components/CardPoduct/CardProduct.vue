@@ -58,7 +58,7 @@ function favoriteHandler(id: string, data: string) {
     $style.heart_icon,
   
   {
-    'text-red-700': toggleColor,
+    ' text-red-700': toggleColor,
     'icon-heart':true,
   }
    ]"/>
