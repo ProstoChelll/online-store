@@ -28,9 +28,7 @@
         </div>
       </div>
       <div class="flex gap-[8px] mt-[10px] mr-[10px]">
-        <a target="_blank" href="https://vk.com/"
-          ><span class="icon-vk footerIconsStyle lg:text-[30px]"></span
-        ></a>
+        <a target="_blank" href="https://vk.com/"><span class="icon-vk footerIconsStyle lg:text-[30px]"></span></a>
         <a target="_blank" href="https://www.instagram.com/"
           ><span class="icon-Instagram footerIconsStyle lg:text-[30px]"></span
         ></a>

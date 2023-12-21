@@ -10,8 +10,6 @@ body {
   padding: 0;
   margin: 0;
   background-color: #eaeaea;
-  display: flex;
-  justify-content: center;
 }
 
 @layer components {

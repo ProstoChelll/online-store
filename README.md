@@ -56,6 +56,17 @@ npm i
 npm run dev
 ```
 
+<h2>Ошибка</h2>
+
+если вы пытаетесь посмотреть мой проект на ubuntu, то при запуске backend у вас может вылезти ошибка связанная с bcrypt. Чтобы ее решить просто переустановите его через npm
+
+```
+npm uninstall bcrypt
+npm i bcrypt
+```
+
+<a href="https://stackoverflow.com/questions/15809611/bcrypt-invalid-elf-header-when-running-node-app" >подробнее об этой ошибке</a>
+
 <h2>Планы на будущее:</h2>
 
 - подправить дизайн

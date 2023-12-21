@@ -11,7 +11,7 @@ const registration = (app, path, mongoClient, collectionName) => {
       const user = {
         name: req.body.nickname,
         password: hashedPassword,
-        token: "123",
+        token: req.body.nickname,
       };
       const result = await collection.insertOne(user);
       res.json(true);

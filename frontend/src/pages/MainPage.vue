@@ -71,7 +71,7 @@ for (let elm of elements) {
 
 <template>
   <template v-if="loading">
-    <div class="w-[100%] h-[100%] flex justify-center items-center"><p>загрузка...</p></div>
+    <div class="flex justify-center items-center"><p>загрузка...</p></div>
   </template>
   <PageTemplate v-if="!loading">
     <template #header><span></span></template>
